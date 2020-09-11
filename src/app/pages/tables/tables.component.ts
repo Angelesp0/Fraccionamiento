@@ -55,6 +55,7 @@ export class ModalEditar {
   @Input() fromParent;
   data: any;
   pay: any;
+  
   constructor(
     public modal: NgbActiveModal,
     private userService: UserService,
