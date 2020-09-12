@@ -19,18 +19,6 @@
 
 // Extra large icons
 
-.icon-xl {
-	width: $icon-size-xl;
-	height: $icon-size-xl;
-
-	i, svg {
-		font-size: $icon-size-xl - .75;
-	}
-
-    + .icon-text {
-    	width: calc(100% - $icon-size-xl - 1);
-    }
-}
 
 
 // Large icons
