@@ -47,7 +47,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
-    <button type="button" ngbAutofocus class="btn btn-danger" (click) ="update()">Ok</button>
+    <button type="button" ngbAutofocus class="btn btn-danger">Ok</button>
   </div>
   `
 })
@@ -55,7 +55,7 @@ export class ModalEditar {
   @Input() fromParent;
   data: any;
   pay: any;
-  
+
   constructor(
     public modal: NgbActiveModal,
     private userService: UserService,
