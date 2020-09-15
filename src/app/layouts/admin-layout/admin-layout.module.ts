@@ -14,6 +14,12 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataTablesModule } from 'angular-datatables';
 
+import { AdvertisementsComponent } from './../../pages/advertisements/advertisements.component';
+import { RulesComponent } from './../../pages/rules/rules.component';
+import { EventsComponent } from './../../pages/events/events.component';
+import { ComplaintsComponent } from './../../pages/complaints/complaints.component';
+import { DivisionComponent } from './../../pages/division/division.component'
+
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -31,7 +37,13 @@ import { DataTablesModule } from 'angular-datatables';
     UserProfileComponent,
     TablesComponent,
     IconsComponent,
-    MapsComponent
+    MapsComponent,
+    AdvertisementsComponent,
+    RulesComponent,
+    EventsComponent,
+    ComplaintsComponent,
+    DivisionComponent
+
   ]
 })
 

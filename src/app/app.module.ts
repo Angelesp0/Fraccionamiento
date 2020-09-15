@@ -13,11 +13,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { DataTablesModule } from 'angular-datatables';
+import { BrowserModule } from '@angular/platform-browser';
 
-  
+
+
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
+    BrowserModule,
     FormsModule,
     HttpClientModule,
     ComponentsModule,
@@ -30,6 +34,7 @@ import { DataTablesModule } from 'angular-datatables';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent]

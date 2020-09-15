@@ -54,6 +54,19 @@ export class UserService {
   getUsers() {
       return this.http.get('http://192.168.100.35:3000/users', this.httpOptions);
   }
+  getAdvertisements() {
+      return this.http.get('http://192.168.100.35:3000/advertisements', this.httpOptions);
+  }
+  getRules() {
+      return this.http.get('http://192.168.100.35:3000/rules', this.httpOptions);
+  }
+  getEvents() {
+      return this.http.get('http://192.168.100.35:3000/events', this.httpOptions);
+  }
+  getComplaints() {
+      return this.http.get('http://192.168.100.35:3000/complaints', this.httpOptions);
+  }
+
   getExecutive() {
     return this.http.get('http://192.168.137.1:3000/executive', this.httpOptions);
 }

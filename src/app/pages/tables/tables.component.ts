@@ -3,7 +3,6 @@ import { UserService } from './../../_services/user/user.service';
 import { Router } from '@angular/router';
 import { Subject  } from 'rxjs';
 import { map  } from 'rxjs/operators';
-import { BrowserModule } from '@angular/platform-browser'
 
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -33,11 +32,12 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let use of pay">
-                  <td>{{use.type}}</td>
+              <ng-template *ngFor="let use of data">
+              <div> holas</div>
+                  <td>{{use}}</td>
                   <td>{{use.amount }}</td>
                   <td>{{use.date }}</td>
-              </tr>
+              </ng-template>
             </tbody>
           </table>
         </div>
@@ -63,10 +63,11 @@ export class ModalEditar {
 
     }
     ngOnInit() {
-      console.log(this.fromParent);
+      console.log(this.fromParent)
       this.userService.getPaid(this.fromParent).subscribe(response => {
         this.pay = response;
         console.log(this.pay);
+        //console.log(this.pay[0].amount);
       });
     }
 }
@@ -109,6 +110,7 @@ export class TablesComponent implements OnInit {
     return body || {};
   }
   open(name: string, id?: number) {
+    console.log(id);
     const modalRef = this._modalService.open(MODALS[name]);
     modalRef.componentInstance.fromParent = id;
   }
