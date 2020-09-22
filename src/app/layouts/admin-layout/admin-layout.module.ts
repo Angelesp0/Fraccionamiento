@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -10,7 +11,7 @@ import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
-import { TablesComponent } from '../../pages/tables/tables.component';
+import { TablesComponent, NgbdModalConfirmAutofocus } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataTablesModule } from 'angular-datatables';
 
@@ -18,13 +19,14 @@ import { AdvertisementsComponent } from './../../pages/advertisements/advertisem
 import { RulesComponent } from './../../pages/rules/rules.component';
 import { EventsComponent } from './../../pages/events/events.component';
 import { ComplaintsComponent } from './../../pages/complaints/complaints.component';
-import { DivisionComponent } from './../../pages/division/division.component'
+import { DivisionComponent, NgbdModalDivision } from './../../pages/division/division.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     DataTablesModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
@@ -33,9 +35,11 @@ import { DivisionComponent } from './../../pages/division/division.component'
     ClipboardModule
   ],
   declarations: [
+    NgbdModalDivision,
     DashboardComponent,
     UserProfileComponent,
     TablesComponent,
+    NgbdModalConfirmAutofocus,
     IconsComponent,
     MapsComponent,
     AdvertisementsComponent,

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpHeaders, HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { User } from '../../models/user';
+import { map } from 'rxjs/operators';
+import { retry, catchError } from 'rxjs/operators';
 
 
 const headers = new HttpHeaders();
@@ -54,6 +56,18 @@ export class UserService {
   getUsers() {
       return this.http.get('http://192.168.100.35:3000/users', this.httpOptions);
   }
+
+  getManager() {
+    return this.http.get('http://192.168.100.35:3000/users/manager', this.httpOptions);
+}
+  postUsers(item) {
+    console.log(item);
+      return this.http.post('http://192.168.100.35:3000/users', item, this.httpOptions);
+  }
+
+  getDivision() {
+      return this.http.get('http://192.168.100.35:3000/division', this.httpOptions);
+  }
   getAdvertisements() {
       return this.http.get('http://192.168.100.35:3000/advertisements', this.httpOptions);
   }
@@ -77,6 +91,27 @@ export class UserService {
 
   getPaid(id) {
     return this.http.get('http://192.168.100.35:3000/payments/' + id, this.httpOptions);
+  }
+
+  login(username: string, password: string) {
+    return this.http.post<any>('http://192.168.100.35:3000/auth', { username, password })
+        .pipe(
+          map(
+            user => {
+            // login successful if there's a user in the response
+            if (user) {
+                // store user details and basic auth credentials in local storage
+                // to keep user logged in between page refreshes
+                user.authdata = window.btoa(username + ':' + password);
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                this.currentUserSubject.next(user);
+
+            }
+
+            return user;
+        }),
+        catchError(this.handleError)
+        );
   }
 
 

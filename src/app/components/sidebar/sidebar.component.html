@@ -88,7 +88,7 @@
         </div>
       </form>
       <!-- Navigation -->
-      <ul class="navbar-nav">
+      <ul class="navbar-nav"  *ngIf="isAdmin">
           <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
               <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
                   <i class="ni {{menuItem.icon}}"></i>
@@ -96,6 +96,22 @@
               </a>
           </li>
       </ul>
+      <ul class="navbar-nav"  *ngIf="isGerente">
+        <li *ngFor="let menuGerente of menusGerente" class="{{menuGerente.class}} nav-item">
+            <a routerLinkActive="active" [routerLink]="[menuGerente.path]" class="nav-link">
+                <i class="ni {{menuGerente.icon}}"></i>
+                {{menuGerente.title}}
+            </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav"  *ngIf="isClient">
+      <li *ngFor="let menuCliente of menusCliente" class="{{menuCliente.class}} nav-item">
+          <a routerLinkActive="active" [routerLink]="[menuCliente.path]" class="nav-link">
+              <i class="ni {{menuCliente.icon}}"></i>
+              {{menuCliente.title}}
+          </a>
+      </li>
+  </ul>
       <!--
       <hr class="my-3">
       <h6 class="navbar-heading text-muted">Documentation</h6>

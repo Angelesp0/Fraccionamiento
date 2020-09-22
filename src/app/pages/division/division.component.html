@@ -11,7 +11,18 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header bg-transparent">
-          <h3 class="mb-0">Anuncios</h3>
+          <div class="row ">
+
+          <div class="col-md-4">
+            <h3 >Anuncios</h3>
+          </div>
+          <div class="col-md-4 offset-md-4">
+            <button class="btn btn-outline-primary" (click)="open('autofocus')">
+                <div>Agregar Fraccionamiento</div>
+            </button>
+          </div>
+        </div>
+
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -25,10 +36,9 @@
               </thead>
               <tbody>
                   <tr *ngFor="let user of users" class="pointer">
-                      <td>{{user.id_advertisements}}</td>
-                      <td class=" text-primary">{{user.title }}</td>
-                      <td>{{user.description }}</td>
-                      <td>{{user.division_id_division }}</td>
+                      <td>{{user.id_division}}</td>
+                      <td class=" text-primary">{{user.name }}</td>
+                      <td>{{user.street }}</td>
                   </tr>
               </tbody>
             </table>

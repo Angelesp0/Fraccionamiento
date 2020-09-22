@@ -1,12 +1,9 @@
 export class User {
-    id: number ;
+    id?: number ;
     first_name: string ;
     last_name: string ;
-    direction: string;
-    colony: string;
-    cp: number;
     email: string;
     password?: string;
-    role?: number;
-    username: string;
+    role_id_role?: number;
+    division_id_division: string;
 }

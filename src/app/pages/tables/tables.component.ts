@@ -3,10 +3,13 @@ import { UserService } from './../../_services/user/user.service';
 import { Router } from '@angular/router';
 import { Subject  } from 'rxjs';
 import { map  } from 'rxjs/operators';
-
+import { Response } from '@angular/http';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from './../../models/user';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 // Editar Usuario
+/*
 @Component({
   selector: 'ngbd-modal-confirm-autofocus',
   template: `
@@ -63,18 +66,101 @@ export class ModalEditar {
 
     }
     ngOnInit() {
-      console.log(this.fromParent)
       this.userService.getPaid(this.fromParent).subscribe(response => {
         this.pay = response;
         console.log(this.pay);
-        //console.log(this.pay[0].amount);
+        // console.log(this.pay[0].amount);
       });
     }
 }
+*/
 
-const MODALS: {[name: string]: Type<any>} = {
-  editar: ModalEditar
-};
+// Agregar Usuario
+@Component({
+  selector: 'ngbd-modal-confirm-autofocus',
+  template: `
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Agregar Usuario Nuevo</h4>
+    <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="col-md-12" class="form-group">
+          <label>Nombre(s) <strong><span class="text-danger">*</span></strong></label>
+          <input formControlName="first_name" name="first_name" inputmode="text" class="form-control" placeholder="Nombre" [(ngModel)]="this.data.first_name"  >
+
+        </div>
+        <div class="col-md-12" class="form-group">
+          <label>Apellido(s) <strong><span class="text-danger">*</span></strong></label>
+          <input formControlName="last_name" name="last_name" inputmode="text" class="form-control" placeholder="Apellido" [(ngModel)]="this.data.last_name" >
+        </div>
+
+        <div class="col-md-12" class="form-group">
+          <label>Email <strong><span class="text-danger">*</span></strong></label>
+          <input formControlName="email" name="email" inputmode="text" class="form-control" placeholder="email" [(ngModel)]="this.data.email">
+        </div>
+
+        <div class="col-md-12" class="form-group">
+          <label>Contraseña <strong><span class="text-danger">*</span></strong></label>
+          <input formControlName="password" name="password" inputmode="text" class="form-control" placeholder="Contraseña" [(ngModel)]="this.data.password">
+        </div>
+
+      <p><strong>Estas por agregar un nuevo usuario <span class="text-primary">Verifica</span> la informacion</strong></p>
+      <div class="form-group">
+
+        <button type="submit" class="btn btn-danger">Ok</button>
+        <button class="btn" data-dismiss="modal">Cancel</button>
+        </div>
+    </form>
+  </div>
+  `
+})
+export class NgbdModalConfirmAutofocus implements OnInit {
+  submitted = false;
+  data: User;
+  registerForm: FormGroup
+
+  constructor(
+    public modal: NgbActiveModal,
+    private userService: UserService,
+    public router: Router,
+    private formBuilder: FormBuilder
+  ) { this.data = new User();  }
+
+    create() {
+      console.log('create');
+      this.userService.postUsers(this.data).subscribe(response => console.log(response));
+    }
+
+    onSubmit() {
+      this.submitted = true;
+      console.log(this.data);
+      // this.data.division_id_division = '2';
+      this.data.role_id_role = 1;
+      console.log(this.registerForm);
+      if (this.registerForm.invalid) {
+        console.log('invalid');
+          return;
+      } else {
+        this.create();
+      }
+    }
+
+    ngOnInit() {
+      this.registerForm = this.formBuilder.group({
+        first_name: ['', Validators.required],
+        last_name: ['', Validators.required],
+        email: ['', Validators.required],
+        password: ['', Validators.required]
+      });
+  }
+  get f() { return this.registerForm.controls; }
+
+
+}
+
 
 @Component({
   selector: 'app-tables',
@@ -114,5 +200,11 @@ export class TablesComponent implements OnInit {
     const modalRef = this._modalService.open(MODALS[name]);
     modalRef.componentInstance.fromParent = id;
   }
-
 }
+
+
+const MODALS: {[name: string]: Type<any>} = {
+  // editar: ModalEditar,
+  autofocus: NgbdModalConfirmAutofocus
+
+};
