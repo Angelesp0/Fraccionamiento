@@ -121,6 +121,7 @@ export class NgbdModalConfirmAutofocus implements OnInit {
   submitted = false;
   data: User;
   registerForm: FormGroup
+  currentUser: any;
 
   constructor(
     public modal: NgbActiveModal,
@@ -138,7 +139,17 @@ export class NgbdModalConfirmAutofocus implements OnInit {
       this.submitted = true;
       console.log(this.data);
       // this.data.division_id_division = '2';
-      this.data.role_id_role = 1;
+      if (this.currentUser['user'].role_id_role === 2 ) {
+        console.log('gerente');
+        this.data.role_id_role = 3;
+        this.data.division_id_division = this.currentUser['user'].division_id_division;
+      }
+      if (this.currentUser['user'].role_id_role === 1 ) {
+        console.log('Admin');
+        this.data.role_id_role = 2;
+
+      }
+
       console.log(this.registerForm);
       if (this.registerForm.invalid) {
         console.log('invalid');
@@ -149,6 +160,10 @@ export class NgbdModalConfirmAutofocus implements OnInit {
     }
 
     ngOnInit() {
+      this.currentUser = JSON.parse( localStorage.getItem('currentUser'));
+      console.log(this.currentUser['user'].division_id_division);
+
+
       this.registerForm = this.formBuilder.group({
         first_name: ['', Validators.required],
         last_name: ['', Validators.required],
@@ -172,6 +187,8 @@ export class TablesComponent implements OnInit {
   data: any;
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
+  divisions: any;
+  currentUser: any;
 
   constructor(
     private _modalService: NgbModal,
@@ -179,15 +196,33 @@ export class TablesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.currentUser = JSON.parse( localStorage.getItem('currentUser'));
+    console.log(this.currentUser['user'].role_id_role);
+    if (this.currentUser['user'].role_id_role === 2 ) {
+      console.log('gerente');
+      this.userService.getUsersByDivision(this.currentUser['user'].division_id_division).pipe(map(this.extractData)).subscribe(response => {
+        this.dtTrigger.next();
+        console.log(response);
+        this.users  = response;
+      });
+    }
+    if (this.currentUser['user'].role_id_role === 1 ) {
+      console.log('Admin');
+      this.userService.getManager().pipe(map(this.extractData)).subscribe(response => {
+        this.dtTrigger.next();
+        console.log(response);
+        this.users  = response;
+      });
+    }
+
+    this.userService.getDivision().subscribe(response => {
+      this.divisions = response;
+      console.log(this.divisions[0]['name']);
+    });
     console.log('hola');
     this.dtOptions = {
       pagingType: 'full_numbers',
     };
-    this.userService.getUsers().pipe(map(this.extractData)).subscribe(response => {
-      this.dtTrigger.next();
-      console.log(response);
-      this.users  = response;
-    });
 
   }
 
@@ -195,9 +230,8 @@ export class TablesComponent implements OnInit {
     const body = res;
     return body || {};
   }
-  open(name: string, id?: number) {
-    console.log(id);
-    const modalRef = this._modalService.open(MODALS[name]);
+  open(names: string, id?: number) {
+    const modalRef = this._modalService.open(MODALS[names]);
     modalRef.componentInstance.fromParent = id;
   }
 }

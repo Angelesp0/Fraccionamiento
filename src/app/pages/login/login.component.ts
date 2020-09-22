@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       console.log(data['user'].role_id_role);
       switch (data['user'].role_id_role) {
         case 1:
-          this.router.navigateByUrl('/division');
+          this.router.navigateByUrl('/tables');
 
           break;
         case 2:
-          this.router.navigateByUrl('/advertisements');
+          this.router.navigateByUrl('/tables');
 
           break;
         case 3:

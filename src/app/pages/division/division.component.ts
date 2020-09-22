@@ -61,16 +61,15 @@ export class NgbdModalDivision implements OnInit {
     }
     create() {
       console.log(this.data);
-
-
+      this.userService.postFraccionamientos(this.data).subscribe(response => console.log(response));
     }
     onSubmit() {
       this.submitted = true;
       this.create();
-  }
+    }
     ngOnInit() {
       this.userService.getManager().subscribe((response) => {
-        this.name = response
+        this.name = response;
         console.log(response);
       });
   }

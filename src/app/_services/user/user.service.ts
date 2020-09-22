@@ -59,10 +59,24 @@ export class UserService {
 
   getManager() {
     return this.http.get('http://192.168.100.35:3000/users/manager', this.httpOptions);
-}
+  }
+
+  getUsersByDivision(id) {
+    return this.http.get('http://192.168.100.35:3000/division/' + id + '/users', this.httpOptions);
+  }
+
   postUsers(item) {
     console.log(item);
       return this.http.post('http://192.168.100.35:3000/users', item, this.httpOptions);
+  }
+
+  postFraccionamientos(item) {
+    console.log(item);
+    const params  = new HttpParams()
+      .set('name', item.name)
+      .set('street', item.street )
+      .set('id_users', item.id_users);
+    return this.http.post('http://192.168.100.35:3000/divisions', item, {params});
   }
 
   getDivision() {
