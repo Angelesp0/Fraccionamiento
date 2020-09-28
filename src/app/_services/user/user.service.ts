@@ -128,5 +128,12 @@ export class UserService {
         );
   }
 
+  getEventsbyDivision(id) {
+    return this.http.get('http://192.168.100.35:3000/events/' + id, this.httpOptions);
+  }
+  getLastPaymentByDivision(id) {
+    return this.http.get('http://192.168.100.35:3000/lastPayments/' + id, this.httpOptions);
+  }
+
 
 }

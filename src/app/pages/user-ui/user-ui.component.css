@@ -1,0 +1,45 @@
+
+
+
+
+/* The circle */
+.sonar-emitter {
+  position: relative;
+  margin: 0 auto;
+  width: 75px;
+  height: 75px;
+  border-radius: 9999px;
+  background-color: rgb(103, 216, 88);
+}
+
+/* the 'wave', same shape and size as its parent */
+.sonar-wave {
+  position: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color:  rgba(103, 216, 88, 0.507);
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/*
+  Animate!
+  NOTE: add browser prefixes where needed.
+*/
+.sonar-wave {
+  animation: sonarWave 2s linear infinite;
+}
+
+@keyframes sonarWave {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}

@@ -20,6 +20,10 @@ import { RulesComponent } from './../../pages/rules/rules.component';
 import { EventsComponent } from './../../pages/events/events.component';
 import { ComplaintsComponent } from './../../pages/complaints/complaints.component';
 import { DivisionComponent, NgbdModalDivision } from './../../pages/division/division.component';
+import { UserUiComponent } from 'src/app/pages/user-ui/user-ui.component';
+import { PayComponent} from '../../pages/user-ui/pay/pay.component';
+import { RecordComponent } from './../../pages/user-ui/record/record.component';
+
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -32,10 +36,11 @@ import { DivisionComponent, NgbdModalDivision } from './../../pages/division/div
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
   ],
   declarations: [
     NgbdModalDivision,
+    UserUiComponent,
     DashboardComponent,
     UserProfileComponent,
     TablesComponent,
@@ -46,7 +51,9 @@ import { DivisionComponent, NgbdModalDivision } from './../../pages/division/div
     RulesComponent,
     EventsComponent,
     ComplaintsComponent,
-    DivisionComponent
+    DivisionComponent,
+    PayComponent,
+    RecordComponent
 
   ]
 })

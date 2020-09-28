@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
           break;
         case 3:
-          this.router.navigateByUrl('/rules');
+          this.router.navigateByUrl('/ui');
           break;
 
         default:

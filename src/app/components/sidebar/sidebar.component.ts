@@ -32,10 +32,12 @@ export const ROUTES_gerente: RouteInfo[] = [
 ];
 
 export const ROUTES_cliente: RouteInfo[] = [
-  { path: '/rules', title: 'Reglas',  icon:'ni-collection text-blue', class: '' },
-  { path: '/events', title: 'Eventos',  icon:'ni-tag text-blue', class: '' },
-  { path: '/complaints', title: 'Quejas',  icon:'ni-support-16 text-blue', class: '' },
-  { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' }
+  { path: '/ui', title: 'Principal',  icon:'ni-collection text-blue', class: '' },
+  //{ path: '/rules', title: 'Reglas',  icon:'ni-collection text-blue', class: '' },
+  //{ path: '/events', title: 'Eventos',  icon:'ni-tag text-blue', class: '' },
+  //{ path: '/complaints', title: 'Quejas',  icon:'ni-support-16 text-blue', class: '' },
+  { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
+  // { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
 
 ];
 

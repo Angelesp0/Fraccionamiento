@@ -17,6 +17,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -31,8 +32,7 @@ import { BrowserModule } from '@angular/platform-browser';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
-
+    AuthLayoutComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

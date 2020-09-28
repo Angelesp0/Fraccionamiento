@@ -10,8 +10,12 @@ import { AdvertisementsComponent } from './../../pages/advertisements/advertisem
 import { RulesComponent } from './../../pages/rules/rules.component';
 import { EventsComponent } from './../../pages/events/events.component';
 import { ComplaintsComponent } from './../../pages/complaints/complaints.component';
-import { DivisionComponent } from './../../pages/division/division.component'
-  
+import { DivisionComponent } from './../../pages/division/division.component';
+import { UserUiComponent } from 'src/app/pages/user-ui/user-ui.component';
+import {PayComponent} from '../../pages/user-ui/pay/pay.component';
+import { RecordComponent } from './../../pages/user-ui/record/record.component';
+
+
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
@@ -22,6 +26,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'rules',          component: RulesComponent } ,
     { path: 'events',         component: EventsComponent },
     { path: 'complaints',     component: ComplaintsComponent },
-    { path: 'division',       component: DivisionComponent }
-
+    { path: 'division',       component: DivisionComponent },
+    { path: 'ui',             component: UserUiComponent },
+    { path: 'pay',            component: PayComponent },
+    { path: 'record',         component: RecordComponent },
 ];
