@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { DataTablesModule } from 'angular-datatables';
 import { BrowserModule } from '@angular/platform-browser';
+import { FileUploadModule  } from 'ng2-file-upload';
 
 
 
@@ -28,6 +29,7 @@ import { BrowserModule } from '@angular/platform-browser';
     RouterModule,
     AppRoutingModule,
     DataTablesModule,
+    FileUploadModule
   ],
   declarations: [
     AppComponent,

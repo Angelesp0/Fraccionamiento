@@ -22,19 +22,19 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <th scope="row">
+                                <tr *ngFor="let payment of payments" class="pointer">
+                                  <th scope="row" >
                                     <div class="media align-items-center">
                                       <div class="media-body">
-                                        <span class="mb-0 text-sm">12-05-20</span>
+                                        <span class="mb-0 text-sm">{{payment.update_time | date: 'dd MMM yy'}}</span>
                                       </div>
                                     </div>
                                   </th>
                                   <td>
-                                    $2,500
+                                    $ {{payment.amount}}
                                   </td>
                                   <td>
-                                    Oxxo
+                                    {{payment.type}}
                                   </td>
                                 </tr>
                               </tbody>
