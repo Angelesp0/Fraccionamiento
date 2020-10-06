@@ -132,7 +132,11 @@ export class NgbdModalConfirmAutofocus implements OnInit {
 
     create() {
       console.log('create');
-      this.userService.postUsers(this.data).subscribe(response => console.log(response));
+      this.userService.postUsers(this.data).subscribe(response => {
+        console.log(response)
+        this.modal.close('Ok click');
+
+      });
     }
 
     onSubmit() {
@@ -162,8 +166,6 @@ export class NgbdModalConfirmAutofocus implements OnInit {
     ngOnInit() {
       this.currentUser = JSON.parse( localStorage.getItem('currentUser'));
       console.log(this.currentUser['user'].division_id_division);
-
-
       this.registerForm = this.formBuilder.group({
         first_name: ['', Validators.required],
         last_name: ['', Validators.required],
@@ -189,6 +191,7 @@ export class TablesComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject();
   divisions: any;
   currentUser: any;
+  role: any;
 
   constructor(
     private _modalService: NgbModal,
@@ -198,6 +201,7 @@ export class TablesComponent implements OnInit {
   ngOnInit() {
     this.currentUser = JSON.parse( localStorage.getItem('currentUser'));
     console.log(this.currentUser['user'].role_id_role);
+    this.role = this.currentUser['user'].role_id_role;
     if (this.currentUser['user'].role_id_role === 2 ) {
       console.log('gerente');
       this.userService.getUsersByDivision(this.currentUser['user'].division_id_division).pipe(map(this.extractData)).subscribe(response => {
@@ -233,6 +237,7 @@ export class TablesComponent implements OnInit {
   open(names: string, id?: number) {
     const modalRef = this._modalService.open(MODALS[names]);
     modalRef.componentInstance.fromParent = id;
+    
   }
 }
 

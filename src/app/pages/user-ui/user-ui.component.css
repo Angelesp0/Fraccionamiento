@@ -1,5 +1,30 @@
 
+/* The circle */
+.sonar-emitter-red {
+  position: relative;
+  margin: 0 auto;
+  width: 75px;
+  height: 75px;
+  border-radius: 9999px;
+  background-color: rgb(197, 85, 85);
+}
 
+/* the 'wave', same shape and size as its parent */
+.sonar-wave-red {
+  position: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color:  rgba(209, 87, 87, 0.562);
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.sonar-wave-red {
+  animation: sonarWave 2s linear infinite;
+}
 
 
 /* The circle */

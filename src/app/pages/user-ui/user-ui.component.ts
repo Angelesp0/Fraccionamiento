@@ -14,6 +14,7 @@ export class UserUiComponent implements OnInit {
   id_user: any;
   date: Date = new Date();
   date1;
+  error: any;
 
   constructor(
     public router: Router,
@@ -25,9 +26,11 @@ export class UserUiComponent implements OnInit {
     this.id_user = this.currentUser['user'].id_users;
     const division_id = this.currentUser['user'].division_id_division;
     this.userService.getEventsbyDivision(division_id).subscribe(response => {
+      console.log(response);
       this.events = response;
     });
     this.userService.getLastPaymentByDivision(this.id_user).subscribe(response => {
+      this.error = response['error'];
       this.lastPayment = response;
       this.date = response['update_time'];
     });

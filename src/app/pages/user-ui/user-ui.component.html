@@ -20,18 +20,32 @@
             <div class="card-body">
             <div class="row justify-content-center">
                 <div class="col">
-                    <div class="sonar-wrapper">
-                        <div class="sonar-emitter">
-                        <div class="sonar-wave"></div>
-                        </div>
-                    </div>
+                    <ng-container *ngIf="error; else elseT">
+                        <div class="sonar-wrapper">
+                            <div class="sonar-emitter-red">
+                                <div class="sonar-wave-red"></div>
+                            </div>
+                        </div>                      
+                    </ng-container>
+                      <ng-template #elseT>
+                        <div class="sonar-wrapper">
+                            <div class="sonar-emitter">
+                                <div class="sonar-wave"></div>
+                            </div>
+                        </div>                      
+                    </ng-template>
                 </div>
                 <div class="col">
                     <button class="btn btn-outline-primary" (click)="pagar()">Pagar Mes</button>
                     <br>
                     <span style="text-align:center;">Ultimo mes pagado</span>
                     <br>
-                    <span style="justify-content: center;">{{date | date: 'dd/MM/y'}}</span>
+                    <ng-container *ngIf="error; else elseTemplate">
+                        <span style="justify-content: center;">No hay registro de pagos</span>
+                      </ng-container>
+                      <ng-template #elseTemplate>
+                        <span style="justify-content: center;">{{date | date: 'dd/MM/y'}}</span>
+                      </ng-template>
                 </div>
             </div>
             </div>

@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { DataTablesModule } from 'angular-datatables';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgxPayPalModule } from 'ngx-paypal';
 
 
 
@@ -23,7 +22,6 @@ import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   imports: [
-    NgxPayPalModule,
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
