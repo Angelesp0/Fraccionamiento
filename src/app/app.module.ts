@@ -13,7 +13,9 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { DataTablesModule } from 'angular-datatables';
 import { BrowserModule } from '@angular/platform-browser';
-import { FileUploadModule  } from 'ng2-file-upload';
+import { NgxPayPalModule } from 'ngx-paypal';
+
+
 
 
 
@@ -21,6 +23,7 @@ import { FileUploadModule  } from 'ng2-file-upload';
 
 @NgModule({
   imports: [
+    NgxPayPalModule,
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
@@ -29,7 +32,6 @@ import { FileUploadModule  } from 'ng2-file-upload';
     RouterModule,
     AppRoutingModule,
     DataTablesModule,
-    FileUploadModule
   ],
   declarations: [
     AppComponent,

@@ -23,6 +23,8 @@ import { DivisionComponent, NgbdModalDivision } from './../../pages/division/div
 import { UserUiComponent } from 'src/app/pages/user-ui/user-ui.component';
 import { PayComponent} from '../../pages/user-ui/pay/pay.component';
 import { RecordComponent } from './../../pages/user-ui/record/record.component';
+import { FileSelectDirective } from 'ng2-file-upload';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 // import { ToastrModule } from 'ngx-toastr';
@@ -36,7 +38,7 @@ import { RecordComponent } from './../../pages/user-ui/record/record.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule,
+    ClipboardModule
   ],
   declarations: [
     NgbdModalDivision,
@@ -53,8 +55,8 @@ import { RecordComponent } from './../../pages/user-ui/record/record.component';
     ComplaintsComponent,
     DivisionComponent,
     PayComponent,
-    RecordComponent
-
+    RecordComponent,
+    FileSelectDirective,
   ]
 })
 
