@@ -24,13 +24,20 @@ export class UserUiComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.id_user = this.currentUser['user'].id_users;
+    this.userService.usersStatus(this.id_user).subscribe(response => {
+      console.log(response['status']);
+      if (response['status'] === 'disabled') {
+          this.error = true;
+    }
+
+    });
+
     const division_id = this.currentUser['user'].division_id_division;
     this.userService.getEventsbyDivision(division_id).subscribe(response => {
       console.log(response);
       this.events = response;
     });
     this.userService.getLastPaymentByDivision(this.id_user).subscribe(response => {
-      this.error = response['error'];
       this.lastPayment = response;
       this.date = response['update_time'];
     });

@@ -158,5 +158,11 @@ export class UserService {
     return this.http.put('http://192.168.2.19:3000/activeuser/' + id, 'active');
   }
 
+  usersStatus(id) {
+    return this.http.get('http://192.168.2.19:3000/usersStatus/' + id,  this.httpOptions);
+  }
+
+  
+
 
 }
