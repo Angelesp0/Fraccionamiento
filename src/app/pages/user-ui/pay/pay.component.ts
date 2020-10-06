@@ -50,10 +50,12 @@ export class PayComponent implements OnInit {
     const payments_id_payments = response['id'];
     ////////////////////////////////////////////////////////////////////////////
     // this.file esta vacio errrrrrror!
-    console.log(this.file);
+    console.log(this.id_user);
     this.userService.postReceipt(this.id_user, this.update_time, this.file, this.amount, payments_id_payments).subscribe(response => {
     console.log(response);
     alert('archivo subido');
+
+    this.userService.activeUser(this.id_user).subscribe(response=> console.log(response));
     });
   });
  }

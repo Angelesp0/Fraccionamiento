@@ -429,8 +429,11 @@
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
+                    <th>Cuenta</th>
                     <th>Fraccionamiento</th>
                     <th>Direccion</th>
+
+                    
                 </tr>
             </thead>
             <tbody>
@@ -438,6 +441,17 @@
                     <td>{{user.id_users}}</td>
                     <td (click)="open('editar', user.id_users)" class=" text-primary">{{user.first_name }}</td>
                     <td>{{user.last_name }}</td>
+                    <td *ngIf=" user.status === 'active'; else elseBlock">
+                        <span class="badge badge-success badge-do text-center">
+                            <i class="bg-warning"></i> {{user.status}}
+                        </span></td>
+                    <ng-template #elseBlock>
+                        <td>
+                            <span class="badge badge-warning badge-do text-center">
+                                <i class="bg-warning"></i> {{user.status}}
+                            </span>
+                        </td>
+                    </ng-template>
                     <td>{{divisions[user.division_id_division - 1].name}}</td>
                     <td>{{divisions[user.division_id_division - 1].street}}</td>
                 </tr>
