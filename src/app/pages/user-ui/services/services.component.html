@@ -1,0 +1,86 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+        </div>
+    </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+    <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <div class="row ">
+                        <div class="col-md-4">
+                            <h4> Rank services</h4>
+                        </div>
+                        </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="table-responsive">
+                                <table class="table align-items-center  table-flush">
+                                  <thead class="text-primary">
+                                    <tr *ngFor="let rank of employees">
+                                        <div class="card shadow" >
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-3"> 
+                                                        <span class="avatar avatar-sm rounded-circle">
+                                                            <img alt="Image placeholder" src="./assets/img/theme/{{rank.img}}">
+                                                          </span>
+                                                    </div>
+                                                    <div class="col"> 
+                                                        <div class="row">
+                                                            <div class="col"> 
+                                                                <h4>{{rank.first_name}} {{rank.last_name}}</h4>
+                                                            </div>
+                                                        <!--
+                                                            <div class="col-5" *ngIf="rank.status === 'Online'; else elseTemplate">
+                                                                <h4 style="color: green;"> {{rank.status}}</h4>
+                                                            </div>
+                                                            <ng-template #elseTemplate>
+                                                                <div class="col-5">
+                                                                    <h4 style="color: grey;"> {{rank.status}}</h4>
+                                                                </div>
+                                                            </ng-template>
+                                                        -->
+                                                        </div>
+                                                        <div class="row">
+                                                            <h4 style="color: gray;">{{rank.job}} </h4>
+                                                        </div>
+                                                        <div class="row">
+                                                            <ul class="list-inline rating-list " *ngFor="let star of stars" style="display: inline-block" >
+                                                                <!--<li (click)="countStar(star)" -->
+                                                                    <li
+                                                                    [ngClass]="{'selected': (star <= rank.rank)}"> 
+                                                                        <i class="fa fa-star"></i>
+                                                                </li>
+                                                            </ul>
+                                                            <span style="color: gray;">{{rank.rank}}</span>
+                                                        </div>
+                                                        <div class="row">
+                                                            <button class="btn btn-success">
+                                                            <a type="button" href="tel:+34678567876" style="color: white;">llamar</a>
+                                                        </button>
+                                                        </div>
+                                                    </div>                                         
+                                                </div>                                         
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+
+                                  </tbody>
+                                </table>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    

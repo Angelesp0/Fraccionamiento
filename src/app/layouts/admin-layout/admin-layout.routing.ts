@@ -14,6 +14,8 @@ import { DivisionComponent } from './../../pages/division/division.component';
 import { UserUiComponent } from 'src/app/pages/user-ui/user-ui.component';
 import {PayComponent} from '../../pages/user-ui/pay/pay.component';
 import { RecordComponent } from './../../pages/user-ui/record/record.component';
+import { ServicesComponent } from 'src/app/pages/user-ui/services/services.component';
+
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -30,4 +32,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'ui',             component: UserUiComponent },
     { path: 'pay',            component: PayComponent },
     { path: 'record',         component: RecordComponent },
+    { path: 'services',       component: ServicesComponent },
+
 ];

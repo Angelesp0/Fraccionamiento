@@ -162,6 +162,13 @@ export class UserService {
     return this.http.get('http://192.168.100.80:3000/usersStatus/' + id,  this.httpOptions);
   }
 
+  getEmployees() {
+    return this.http.get('http://192.168.100.80:3000/employee',  this.httpOptions);
+  }
+  getStars(id) {
+    return this.http.get('http://192.168.100.80:3000/employee/' + id + '/stars',  this.httpOptions);
+  }
+
   
 
 

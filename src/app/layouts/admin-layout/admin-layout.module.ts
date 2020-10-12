@@ -24,6 +24,7 @@ import { UserUiComponent } from 'src/app/pages/user-ui/user-ui.component';
 import { PayComponent} from '../../pages/user-ui/pay/pay.component';
 import { RecordComponent } from './../../pages/user-ui/record/record.component';
 import { FileSelectDirective, FileUploadModule  } from 'ng2-file-upload';
+import { ServicesComponent } from './../../pages/user-ui/services/services.component';
 
 
 // import { ToastrModule } from 'ngx-toastr';
@@ -38,7 +39,7 @@ import { FileSelectDirective, FileUploadModule  } from 'ng2-file-upload';
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    FileUploadModule
+    FileUploadModule,
   ],
   declarations: [
     NgbdModalDivision,
@@ -56,6 +57,7 @@ import { FileSelectDirective, FileUploadModule  } from 'ng2-file-upload';
     DivisionComponent,
     PayComponent,
     RecordComponent,
+    ServicesComponent
   ]
 })
 

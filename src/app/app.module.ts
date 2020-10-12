@@ -30,6 +30,7 @@ import { BrowserModule } from '@angular/platform-browser';
     RouterModule,
     AppRoutingModule,
     DataTablesModule,
+    
   ],
   declarations: [
     AppComponent,
