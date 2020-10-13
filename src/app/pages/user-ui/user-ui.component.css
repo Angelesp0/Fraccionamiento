@@ -88,17 +88,18 @@ ngb-carousel {
 }
 
 .carousel-item {
-  display: flex !important;
+  display: block !important;
+  z-index: 1;
+  position: absolute;
+  transition: opacity 1.5s easy-in-out, visibility 1s;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1.2s ease-in-out, visibility 1.2s;
-  z-index: -1;
 }
-
-.carousel-item.active{
-  opacity: 1;
+.carousel-item.active {
+  position: relative;
+  transition: opacity 1.5s easy-in-out, visibility 1s;
   visibility: visible;
-  z-index: 10;
+  opacity: 1;
 }
 
 .carousel-control-prev {

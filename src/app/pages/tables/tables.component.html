@@ -452,8 +452,14 @@
                             </span>
                         </td>
                     </ng-template>
-                    <td>{{divisions[user.division_id_division - 1].name}}</td>
-                    <td>{{divisions[user.division_id_division - 1].street}}</td>
+                    <ng-container *ngIf="user.division_id_division; else elseTemplate2">
+                      <td>{{divisions[user.division_id_division - 1].name}}</td>
+                      <td>{{divisions[user.division_id_division - 1].street}}</td>
+                    </ng-container>
+                    <ng-template #elseTemplate2>
+                      <td>en espera</td>
+                      <td>en espera</td>
+                    </ng-template>
                 </tr>
             </tbody>
           </table>
