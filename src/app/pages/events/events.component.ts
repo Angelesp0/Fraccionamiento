@@ -90,8 +90,7 @@ export class EventsComponent implements OnInit {
     });
   }
 
-  open(content, data) {
-    this.selected = data;
+  open(content) {
     this.userService.getDivision().subscribe(response => {
       console.log(response);
       this.name  = response;

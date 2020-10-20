@@ -30,7 +30,6 @@ export class ComplaintsComponent implements OnInit {
     public modal: NgbActiveModal,
     private modalService: NgbModal,
     private formBuilder: FormBuilder
-    // 
   ) {
     this.data = new Complaints();
    }
