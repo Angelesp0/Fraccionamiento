@@ -11,8 +11,23 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header bg-transparent">
-          <h3 class="mb-0">Fraccionamientos</h3>
-        </div>
+          <div class="row ">
+            <div class="col-md-4">
+              <h3>Quejas</h3>
+            </div>
+            <div class="col-md-4 offset-md-4">
+              <!--<ng-container *ngIf="id_role === 2; else elseTemplate">
+                <button class="btn btn-outline-primary" (click)="open('autofocus')">
+                  Agregar Nuevo Residente
+                </button>
+              </ng-container>
+              <ng-template #elseTemplate>-->
+                <button class="btn btn-outline-primary" (click)="open(acept)">
+                  Agregar Nueva Queja
+                </button>
+              <!--</ng-template>-->
+            </div>
+          </div>        </div>
         <div class="card-body">
           <div class="table-responsive">
             <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover ">
@@ -39,3 +54,37 @@
     </div>
   </div>
 </div>
+
+<ng-template #acept let-c="close" let-d="dismiss">
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Agregar un nuevo Evento</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="col-md-12" class="form-group">
+            <label>Titulo de la queja <strong><span class="text-danger">*</span></strong></label>
+            <input formControlName="subject" name="subject" inputmode="text" class="form-control" placeholder="Titulo del anuncio" [(ngModel)]="this.data.subject"  >
+          </div>
+          <div class="col-md-12" class="form-group">
+            <label>descripcion <strong><span class="text-danger">*</span></strong></label>
+            <input formControlName="message" name="message" inputmode="text" class="form-control" placeholder="Descripcion de la queja" [(ngModel)]="this.data.message" >
+          </div>
+          <div class="col-md-12" class="form-group">
+            <label>division_id_division <strong><span class="text-danger">*</span></strong></label>
+            <select formControlName="division_id_division" name="division_id_division" class="form-control" inputmode="text" [(ngModel)]="this.data.division_id_division">
+                <option [value]="user.id_division" *ngFor="let user of name">{{user.name}} {{user.street}}</option>
+            </select>
+          </div>
+  
+        <p><strong>Estas por agregar un nuevo usuario <span class="text-primary">Verifica</span> la informacion</strong></p>
+        <div class="form-group">
+  
+          <button type="submit" class="btn btn-danger">Ok</button>
+          <button class="btn" data-dismiss="modal">Cancel</button>
+          </div>
+      </form>
+    </div>
+</ng-template>

@@ -11,8 +11,24 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header bg-transparent">
-          <h3 class="mb-0">Anuncios</h3>
-        </div>
+          <div class="row ">
+
+            <div class="col-md-4">
+              <h3 >Anuncios</h3>
+            </div>
+            <div class="col-md-4 offset-md-4">
+              <!--<ng-container *ngIf="id_role === 2; else elseTemplate">
+                <button class="btn btn-outline-primary" (click)="open('autofocus')">
+                  Agregar Nuevo Residente
+                </button>
+              </ng-container>
+              <ng-template #elseTemplate>-->
+                <button class="btn btn-outline-primary" (click)="open('autofocus')">
+                  Agregar Nuevo Gerente
+                </button>
+              <!--</ng-template>-->
+            </div>
+          </div>
         <div class="card-body">
           <div class="table-responsive">
             <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover ">

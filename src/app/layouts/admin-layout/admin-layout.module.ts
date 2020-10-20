@@ -25,7 +25,8 @@ import { PayComponent} from '../../pages/user-ui/pay/pay.component';
 import { RecordComponent } from './../../pages/user-ui/record/record.component';
 import { FileSelectDirective, FileUploadModule  } from 'ng2-file-upload';
 import { ServicesComponent } from './../../pages/user-ui/services/services.component';
-
+import { NgbdModalAdvertisements } from './../../pages/advertisements/advertisements.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -57,7 +58,11 @@ import { ServicesComponent } from './../../pages/user-ui/services/services.compo
     DivisionComponent,
     PayComponent,
     RecordComponent,
-    ServicesComponent
+    ServicesComponent,
+    NgbdModalAdvertisements
+  ],
+  providers: [
+    NgbActiveModal,
   ]
 })
 

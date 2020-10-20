@@ -55,20 +55,20 @@ export class UserService {
   // 192.168.100.35
 
   getUsers() {
-      return this.http.get('http://192.168.100.80:3000/users', this.httpOptions);
+      return this.http.get('http://192.168.43.198:3000/users', this.httpOptions);
   }
 
   getManager() {
-    return this.http.get('http://192.168.100.80:3000/users/manager', this.httpOptions);
+    return this.http.get('http://192.168.43.198:3000/users/manager', this.httpOptions);
   }
 
   getUsersByDivision(id) {
-    return this.http.get('http://192.168.100.80:3000/division/' + id + '/users', this.httpOptions);
+    return this.http.get('http://192.168.43.198:3000/division/' + id + '/users', this.httpOptions);
   }
 
   postUsers(item) {
     console.log(item);
-      return this.http.post('http://192.168.100.80:3000/users', item, this.httpOptions);
+      return this.http.post('http://192.168.43.198:3000/users', item, this.httpOptions);
   }
 
   postFraccionamientos(item) {
@@ -77,39 +77,78 @@ export class UserService {
       .set('name', item.name)
       .set('street', item.street )
       .set('id_users', item.id_users);
-    return this.http.post('http://192.168.100.80:3000/divisions', item, {params});
+    return this.http.post('http://192.168.43.198:3000/divisions', item, {params});
   }
 
   getDivision() {
-      return this.http.get('http://192.168.100.80:3000/division', this.httpOptions);
+      return this.http.get('http://192.168.43.198:3000/division', this.httpOptions);
   }
   getAdvertisements() {
-      return this.http.get('http://192.168.100.80:3000/advertisements', this.httpOptions);
+      return this.http.get('http://192.168.43.198:3000/advertisements', this.httpOptions);
   }
+
+  postAdvertisements(title, description, date, division_id_division, url?, img?) {
+    console.log('hola');
+    return this.http
+    .post('http://192.168.43.198:3000/advertisements/' + division_id_division, {title, description, date, url, img}, this.httpOptions )
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+  postRules(title, body, division_id_division, url?, name?) {
+    console.log('hola');
+    return this.http
+    .post('http://192.168.43.198:3000/rules/' + division_id_division, {title, body, division_id_division, url, name}, this.httpOptions )
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  postEvents(title, description, start, end, division_id_division) {
+    console.log('hola');
+    return this.http
+    .post('http://192.168.43.198:3000/events/' + division_id_division, {title, description, start, end}, this.httpOptions )
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  postComplaints(subject, message, division_id_division) {
+    console.log(division_id_division);
+    return this.http
+    .post('http://192.168.43.198:3000/complaints/' + division_id_division, {subject, message}, this.httpOptions )
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getAdvertisementsById(id) {
+    return this.http.get('http://192.168.43.198:3000/advertisements/' + id, this.httpOptions);
+}
   getRules() {
-      return this.http.get('http://192.168.100.80:3000/rules', this.httpOptions);
+      return this.http.get('http://192.168.43.198:3000/rules', this.httpOptions);
   }
   getEvents() {
-      return this.http.get('http://192.168.100.80:3000/events', this.httpOptions);
+      return this.http.get('http://192.168.43.198:3000/events', this.httpOptions);
   }
   getComplaints() {
-      return this.http.get('http://192.168.100.80:3000/complaints', this.httpOptions);
+      return this.http.get('http://192.168.43.198:3000/complaints', this.httpOptions);
   }
 
   getExecutive() {
     return this.http.get('http://192.168.137.1:3000/executive', this.httpOptions);
-}
+  }
 
   getUser(id) {
     return this.http.get('http://192.168.137.1:3000/users/' + id, this.httpOptions);
   }
 
   getPaid(id) {
-    return this.http.get('http://192.168.100.80:3000/payments/' + id, this.httpOptions);
+    return this.http.get('http://192.168.43.198:3000/payments/' + id, this.httpOptions);
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>('http://192.168.100.80:3000/auth', { username, password })
+    return this.http.post<any>('http://192.168.43.198:3000/auth', { username, password })
         .pipe(
           map(
             user => {
@@ -130,14 +169,14 @@ export class UserService {
   }
 
   getEventsbyDivision(id) {
-    return this.http.get('http://192.168.100.80:3000/events/' + id, this.httpOptions);
+    return this.http.get('http://192.168.43.198:3000/events/' + id, this.httpOptions);
   }
   getLastPaymentByDivision(id) {
-    return this.http.get('http://192.168.100.80:3000/lastPayments/' + id, this.httpOptions);
+    return this.http.get('http://192.168.43.198:3000/lastPayments/' + id, this.httpOptions);
   }
 
   postPayment(id, description, amount, status, update_time, type, users_id_users) {
-      return this.http.post('http://192.168.100.80:3000/payments/' + id, {description, amount, status, update_time, type, users_id_users}, this.httpOptions);
+      return this.http.post('http://192.168.43.198:3000/payments/' + id, {description, amount, status, update_time, type, users_id_users}, this.httpOptions);
   }
 
   postReceipt(id, date, file, value, payments_id_payments) {
@@ -148,28 +187,29 @@ export class UserService {
     uploadData.append('payments_id_payments', payments_id_payments);
 
     return this.http
-      .post('http://192.168.100.80:3000/users/' + id + '/receipt', uploadData)
+      .post('http://192.168.43.198:3000/users/' + id + '/receipt', uploadData)
       .pipe(
         catchError(this.handleError)
       );
   }
 
   activeUser(id) {
-    return this.http.put('http://192.168.100.80:3000/activeuser/' + id, 'active');
+    return this.http.put('http://192.168.43.198:3000/activeuser/' + id, 'active');
   }
 
   usersStatus(id) {
-    return this.http.get('http://192.168.100.80:3000/usersStatus/' + id,  this.httpOptions);
+    return this.http.get('http://192.168.43.198:3000/usersStatus/' + id,  this.httpOptions);
   }
 
   getEmployees() {
-    return this.http.get('http://192.168.100.80:3000/employee',  this.httpOptions);
+    return this.http.get('http://192.168.43.198:3000/employee',  this.httpOptions);
   }
   getStars(id) {
-    return this.http.get('http://192.168.100.80:3000/employee/' + id + '/stars',  this.httpOptions);
+    return this.http.get('http://192.168.43.198:3000/employee/' + id + '/stars',  this.httpOptions);
   }
 
-  
+
+
 
 
 }
