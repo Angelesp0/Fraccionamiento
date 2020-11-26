@@ -16,6 +16,10 @@
                                 <h4>Servicios</h4>
                             </div>
                         </div>
+                        <div class="card-body">
+                            PROXIMAMENTE
+                        </div>
+                        <!--
                     <div class="card-body">
                         <div class="row justify-content-center">
                             <div class="table-responsive">
@@ -35,23 +39,13 @@
                                                             <div class="col"> 
                                                                 <h4>{{rank.first_name}} {{rank.last_name}}</h4>
                                                             </div>
-                                                        <!--
-                                                            <div class="col-5" *ngIf="rank.status === 'Online'; else elseTemplate">
-                                                                <h4 style="color: green;"> {{rank.status}}</h4>
-                                                            </div>
-                                                            <ng-template #elseTemplate>
-                                                                <div class="col-5">
-                                                                    <h4 style="color: grey;"> {{rank.status}}</h4>
-                                                                </div>
-                                                            </ng-template>
-                                                        -->
+                                                       
                                                         </div>
                                                         <div class="row">
                                                             <h4 style="color: gray;">{{rank.job}} </h4>
                                                         </div>
                                                         <div class="row">
                                                             <ul class="list-inline rating-list " *ngFor="let star of stars" style="display: inline-block" >
-                                                                <!--<li (click)="countStar(star)" -->
                                                                     <li
                                                                     [ngClass]="{'selected': (star <= rank.rank)}"> 
                                                                         <i class="fa fa-star"></i>
@@ -75,6 +69,7 @@
                               </div>
                         </div>
                     </div>
+                -->
                 </div>
             </div>
         </div>

@@ -207,6 +207,15 @@ export class UserService {
   getStars(id) {
     return this.http.get('http://192.168.100.80:3000/employee/' + id + '/stars',  this.httpOptions);
   }
+  getVoting(id) {
+    return this.http.get('http://192.168.100.80:3000/voting/' + id ,  this.httpOptions);
+  }
+  getPayments(id) {
+    return this.http.get('http://192.168.100.80:3000/division/' + id + '/payments',  this.httpOptions);
+  }
+  getVote(id) {
+    return this.http.get('http://192.168.100.80:3000/vote/' + id ,  this.httpOptions);
+  }
 
 
 

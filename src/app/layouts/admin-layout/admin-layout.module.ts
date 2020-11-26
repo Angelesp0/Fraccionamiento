@@ -19,6 +19,10 @@ import { AdvertisementsComponent } from './../../pages/advertisements/advertisem
 import { RulesComponent } from './../../pages/rules/rules.component';
 import { EventsComponent } from './../../pages/events/events.component';
 import { ComplaintsComponent } from './../../pages/complaints/complaints.component';
+import { VotingComponent } from './../../pages/voting/voting.component';
+import { PaymentsComponent } from './../../pages/payments/payments.component';
+
+
 import { DivisionComponent, NgbdModalDivision } from './../../pages/division/division.component';
 import { UserUiComponent } from 'src/app/pages/user-ui/user-ui.component';
 import { PayComponent} from '../../pages/user-ui/pay/pay.component';
@@ -59,7 +63,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     PayComponent,
     RecordComponent,
     ServicesComponent,
-    NgbdModalAdvertisements
+    NgbdModalAdvertisements,
+    VotingComponent,
+    PaymentsComponent
   ],
   providers: [
     NgbActiveModal,
