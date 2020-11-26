@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject  } from 'rxjs';
 import { map  } from 'rxjs/operators';
 import { UserService } from './../../_services/user/user.service';
+import { Voting } from './../../models/voting';
 
 @Component({
   selector: 'app-voting',
@@ -19,15 +20,25 @@ export class VotingComponent implements OnInit {
   votaciones: any;
   votos: any;
   final: any;
+  data: Voting;
+  name: any;
 
   aceptacion: any;
   rechazo: any;
+  registerForm: any;
+
 
 
   constructor(
     private userService: UserService,
+    private formBuilder: FormBuilder,
+    public modal: NgbActiveModal,
+    private modalService: NgbModal,
 
-  ) { }
+  ) {
+    this.data = new Voting();
+
+   }
 
   ngOnInit(): void {
     this.votaciones = [];
@@ -39,6 +50,11 @@ export class VotingComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
     };
+    this.registerForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      division_id_division: ['', Validators.required]
+    });
     console.log( this.currentUser);
     this.userService.getVoting(this.currentUser.user.division_id_division).pipe(map(this.extractData)).subscribe(response => {
       this.votaciones = response;
@@ -80,6 +96,21 @@ export class VotingComponent implements OnInit {
   private extractData(res: Response) {
     const body = res;
     return body || {};
+  }
+
+  newVoting() {
+    const division_id = this.currentUser['user'].division_id_division;
+    this.userService.postVoting(division_id, this.data.name, this.data.description ).subscribe(response => {
+      console.log('Votacion registrada');
+    });
+  }
+
+  open(content) {
+    this.userService.getDivision().subscribe(response => {
+      console.log(response);
+      this.name  = response;
+    });
+    this.modalService.open(content, { size: 'md' });
   }
 
 }

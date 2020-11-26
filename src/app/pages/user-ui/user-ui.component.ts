@@ -17,6 +17,8 @@ export class UserUiComponent implements OnInit {
   error: any;
   votaciones: any;
 
+
+
   constructor(
     public router: Router,
     public userService: UserService
@@ -50,6 +52,18 @@ export class UserUiComponent implements OnInit {
 
   pagar() {
     this.router.navigate(['/pay/']);
+  }
+
+  aceptar(id_voting) {
+    this.userService.postVote(id_voting, this.id_user, '1').subscribe(response => {
+      console.log('enviado');
+    });
+  }
+
+  rechazar(id_voting) {
+    this.userService.postVote(id_voting, this.id_user, '0').subscribe(response => {
+      console.log('enviado');
+    });
   }
 
 }

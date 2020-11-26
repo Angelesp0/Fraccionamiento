@@ -217,6 +217,23 @@ export class UserService {
     return this.http.get('http://192.168.100.80:3000/vote/' + id ,  this.httpOptions);
   }
 
+  postVote(voting_id_voting, users_id_users, choice) {
+    console.log('voto');
+    return this.http
+    .post('http://192.168.100.80:3000/vote/' + voting_id_voting, {users_id_users, choice}, this.httpOptions )
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  postVoting(divisionId, name, description) {
+    return this.http
+    .post('http://192.168.100.80:3000/voting/' + divisionId, {name, description}, this.httpOptions )
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
 
 

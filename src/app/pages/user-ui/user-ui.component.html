@@ -134,11 +134,11 @@
                                       <span class="mb-0 text-sm">{{votacion.name}}</span>                                      
                                   </th>
                                   <th class="col-4">
-                                    <span class="mb-0 text-sm">{{votacion.description}}</span>
+                                    <span class="mb-0 text-sm">{{votacion.description}}</span>                                    
                                   </th>
                                   <td class="col-4">
-                                    <button class="btn btn-outline-success">aceptar</button>
-                                    <button class="btn btn-outline-primary">rechazar</button>
+                                    <button class="btn btn-outline-success"  (click)="aceptar(votacion.id_voting)">aceptar</button>
+                                    <button class="btn btn-outline-primary"  (click)="rechazar(votacion.id_voting)">rechazar</button>
                                   </td>
                                 </tr>
                               </tbody>

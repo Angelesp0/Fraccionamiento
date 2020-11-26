@@ -22,7 +22,9 @@
                   </button>
                 </ng-container>
                 <ng-template #elseTemplate>-->
-
+                  <button class="btn btn-outline-primary" (click)="open(add)">
+                    Agregar Nueva Queja
+                  </button>
                 <!--</ng-template>-->
               </div>
             </div>
@@ -55,3 +57,31 @@
       </div>
     </div>
   </div>
+
+
+  <ng-template #add let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar un nueva votacion</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="registerForm" (ngSubmit)="newVoting()">
+            <div class="col-md-12" class="form-group">
+              <label>Nombre <strong><span class="text-danger">*</span></strong></label>
+              <input formControlName="name" name="name" inputmode="text" class="form-control" placeholder="Titulo del anuncio" [(ngModel)]="this.data.name"  >
+            </div>
+            <div class="col-md-12" class="form-group">
+              <label>descripcion <strong><span class="text-danger">*</span></strong></label>
+              <input formControlName="description" name="description" inputmode="text" class="form-control" placeholder="Descripcion de la queja" [(ngModel)]="this.data.description" >
+            </div>    
+          <p><strong>Estas por agregar una nueva votacion <span class="text-primary">Verifica</span> la informacion</strong></p>
+          <div class="form-group">
+    
+            <button type="submit" class="btn btn-danger">Ok</button>
+            <button class="btn" (click)="d('Cross click')">Cancel</button>
+            </div>
+        </form>
+      </div>
+  </ng-template>
