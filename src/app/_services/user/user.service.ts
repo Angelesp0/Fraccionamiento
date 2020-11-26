@@ -226,9 +226,9 @@ export class UserService {
     );
   }
 
-  postVoting(divisionId, name, description) {
+  postVoting(divisionId, name, description, budget) {
     return this.http
-    .post('http://192.168.100.80:3000/voting/' + divisionId, {name, description}, this.httpOptions )
+    .post('http://192.168.100.80:3000/voting/' + divisionId, {name, description, budget}, this.httpOptions )
     .pipe(
       catchError(this.handleError)
     );

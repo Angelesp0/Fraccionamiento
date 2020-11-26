@@ -3,4 +3,5 @@ export class Voting {
     name: string;
     description: string;
     division_id_division: string;
+    budget: number;
 }

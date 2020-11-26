@@ -53,7 +53,9 @@ export class VotingComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      division_id_division: ['', Validators.required]
+      division_id_division: ['', Validators.required],
+      budget: ['', Validators.required]
+
     });
     console.log( this.currentUser);
     this.userService.getVoting(this.currentUser.user.division_id_division).pipe(map(this.extractData)).subscribe(response => {
@@ -100,7 +102,7 @@ export class VotingComponent implements OnInit {
 
   newVoting() {
     const division_id = this.currentUser['user'].division_id_division;
-    this.userService.postVoting(division_id, this.data.name, this.data.description ).subscribe(response => {
+    this.userService.postVoting(division_id, this.data.name, this.data.description, this.data.budget ).subscribe(response => {
       console.log('Votacion registrada');
     });
   }

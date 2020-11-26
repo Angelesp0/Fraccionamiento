@@ -24,13 +24,13 @@ export const ROUTES: RouteInfo[] = [
 ];
 
 export const ROUTES_gerente: RouteInfo[] = [
-  { path: '/tables', title: 'Usuarios',  icon: 'ni-circle-08 text-blue', class: '' },
-  { path: '/rules', title: 'Reglas',  icon: 'ni-collection text-blue', class: '' },
+  { path: '/tables', title: 'Residentes',  icon: 'ni-circle-08 text-blue', class: '' },
+  { path: '/voting', title: 'Manejo de Recursos',  icon: 'ni ni-money-coins text-blue', class: '' },
+  { path: '/payments', title: 'Control de pagos',  icon: 'ni ni-bullet-list-67 text-blue', class: '' },
   { path: '/events', title: 'Eventos',  icon: 'ni-tag text-blue', class: '' },
-  { path: '/complaints', title: 'Quejas',  icon: 'ni-support-16 text-blue', class: '' },
-  { path: '/login', title: 'Login',  icon: 'ni-key-25 text-info', class: '' },
-  { path: '/voting', title: 'Votaciones',  icon: 'ni-support-16 text-blue', class: '' },
-  { path: '/payments', title: 'Lista de pagos',  icon: 'ni-support-16 text-blue', class: '' },
+  { path: '/rules', title: 'Reglas',  icon: 'ni-collection text-blue', class: '' },
+  { path: '/complaints', title: 'Quejas',  icon: 'ni ni-chat-round text-blue', class: '' },
+  { path: '/login', title: 'Cerrar sesion',  icon: 'ni-key-25 text-info', class: '' },
 ];
 
 export const ROUTES_cliente: RouteInfo[] = [

@@ -13,7 +13,7 @@
           <div class="card-header bg-transparent">
             <div class="row ">
               <div class="col-md-4">
-                <h3>Votaciones</h3>
+                <h3>Manejo de Recursos</h3>
               </div>
               <div class="col-md-4 offset-md-4">
                 <!--<ng-container *ngIf="id_role === 2; else elseTemplate">
@@ -23,7 +23,7 @@
                 </ng-container>
                 <ng-template #elseTemplate>-->
                   <button class="btn btn-outline-primary" (click)="open(add)">
-                    Agregar Nueva Queja
+                    Agregar Nueva Votacion
                   </button>
                 <!--</ng-template>-->
               </div>
@@ -37,6 +37,7 @@
                         <th>Id</th>
                         <th>Titulo</th>
                         <th>Descripcion</th>
+                        <th>Presupuesto</th>
                         <th>A favor</th>
                         <th>En contra</th>
                     </tr>
@@ -46,6 +47,7 @@
                         <td>{{user.data.id_voting}}</td>
                         <td class=" text-primary">{{user['data'].name }}</td>
                         <td>{{user['data'].description}}</td>
+                        <td class=" text-primary">$ {{user['data'].budget}}</td>
                         <th>{{user.aceptacion}}</th>
                         <td>{{user.rechazo}}</td>
                     </tr>
@@ -70,16 +72,20 @@
       <form [formGroup]="registerForm" (ngSubmit)="newVoting()">
             <div class="col-md-12" class="form-group">
               <label>Nombre <strong><span class="text-danger">*</span></strong></label>
-              <input formControlName="name" name="name" inputmode="text" class="form-control" placeholder="Titulo del anuncio" [(ngModel)]="this.data.name"  >
+              <input formControlName="name" name="name" inputmode="text" class="form-control" placeholder="Titulo " [(ngModel)]="this.data.name"  >
             </div>
             <div class="col-md-12" class="form-group">
-              <label>descripcion <strong><span class="text-danger">*</span></strong></label>
-              <input formControlName="description" name="description" inputmode="text" class="form-control" placeholder="Descripcion de la queja" [(ngModel)]="this.data.description" >
+              <label>Descripcion <strong><span class="text-danger">*</span></strong></label>
+              <input formControlName="description" name="description" inputmode="text" class="form-control" placeholder="Descripcion" [(ngModel)]="this.data.description" >
+            </div>   
+            <div class="col-md-12" class="form-group">
+              <label>Presupuesto <strong><span class="text-danger">*</span></strong></label>
+              <input formControlName="budget" name="budget" inputmode="numeric" class="form-control" placeholder="$" [(ngModel)]="this.data.budget" >
             </div>    
           <p><strong>Estas por agregar una nueva votacion <span class="text-primary">Verifica</span> la informacion</strong></p>
           <div class="form-group">
-    
-            <button type="submit" class="btn btn-danger">Ok</button>
+  
+            <button type="submit" class="btn btn-danger" (click)="d('Cross click')">Ok</button>
             <button class="btn" (click)="d('Cross click')">Cancel</button>
             </div>
         </form>
