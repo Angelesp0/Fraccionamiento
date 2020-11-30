@@ -41,7 +41,7 @@ export class MapsComponent implements OnInit {
         title: 'Hello World!'
     });
 
-    var contentString = '<div class="info-window-content"><h2>ALBA</h2>' +
+    var contentString = '<div class="info-window-content"><h2>AREXA</h2>' +
         '<p></p></div>';
 
     var infowindow = new google.maps.InfoWindow({
