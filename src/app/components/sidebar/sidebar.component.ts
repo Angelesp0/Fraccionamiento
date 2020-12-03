@@ -16,7 +16,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/tables', title: 'Usuarios',  icon:'ni-circle-08 text-blue', class: '' },
     { path: '/division', title: 'Fraccionamientos',  icon:'ni-building text-blue', class: '' },
     { path: '/advertisements', title: 'Anuncios',  icon:'ni-notification-70 text-blue', class: '' },
-    { path: '/rules', title: 'Reglas',  icon:'ni-collection text-blue', class: '' },
+    { path: '/rules', title: 'Reglamento',  icon:'ni-collection text-blue', class: '' },
     { path: '/events', title: 'Eventos',  icon:'ni-tag text-blue', class: '' },
     { path: '/complaints', title: 'Quejas',  icon:'ni-support-16 text-blue', class: '' },
     { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
@@ -28,7 +28,7 @@ export const ROUTES_gerente: RouteInfo[] = [
   { path: '/voting', title: 'Manejo de Recursos',  icon: 'ni ni-money-coins text-blue', class: '' },
   { path: '/payments', title: 'Control de pagos',  icon: 'ni ni-bullet-list-67 text-blue', class: '' },
   { path: '/events', title: 'Eventos',  icon: 'ni-tag text-blue', class: '' },
-  { path: '/rules', title: 'Reglas',  icon: 'ni-collection text-blue', class: '' },
+  { path: '/rules', title: 'Reglamento',  icon: 'ni-collection text-blue', class: '' },
   { path: '/complaints', title: 'Quejas',  icon: 'ni ni-chat-round text-blue', class: '' },
   { path: '/login', title: 'Cerrar sesion',  icon: 'ni-key-25 text-info', class: '' },
 ];
@@ -38,7 +38,7 @@ export const ROUTES_cliente: RouteInfo[] = [
   { path: '/services', title: 'Servicios',  icon: 'ni-collection text-blue', class: '' },
 
 
-  //{ path: '/rules', title: 'Reglas',  icon:'ni-collection text-blue', class: '' },
+  //{ path: '/rules', title: 'Rules',  icon:'ni-collection text-blue', class: '' },
   //{ path: '/events', title: 'Eventos',  icon:'ni-tag text-blue', class: '' },
   //{ path: '/complaints', title: 'Quejas',  icon:'ni-support-16 text-blue', class: '' },
   { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },

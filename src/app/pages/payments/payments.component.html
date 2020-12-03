@@ -32,9 +32,9 @@
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover ">
                 <thead class=" text-primary">
                     <tr>
-                        <th>Id</th>
-                        <th>Nombre</th>
-                        <th>email</th>
+                       <!-- <th>Id</th>-->
+                        <th>Calle</th>
+                        <th># Casa</th>
                         <th>Cantidad</th>
                         <th>Metodo de pago</th>
                         <th>Fecha de pago</th>
@@ -42,9 +42,9 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of users" class="pointer">
-                        <td>{{user.id_payments}}</td>
-                        <td class=" text-primary">{{user.first_name }} {{user.last_name }}</td>
-                        <td>{{user.email}}</td>
+                        <!--<td>{{user.id_payments}}</td>-->
+                        <td class=" text-primary">{{user.street}}</td>
+                        <td>{{user.house_number}}</td>
                         <td style="color: green;">{{user.amount}}</td>
                         <th style="color: green;">{{user.type}}</th>
                         <td>{{user.update_time | date: 'dd/MMM/y'}}</td>

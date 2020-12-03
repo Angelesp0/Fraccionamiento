@@ -101,7 +101,7 @@
           <div class="row ">
 
           <div class="col-md-4">
-            <h3 >Anuncios</h3>
+            <h3>Todos los residentes</h3>
           </div>
           <div class="col-md-4 offset-md-4">
             <ng-container *ngIf="role === 2; else elseTemplate">
@@ -430,8 +430,8 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Cuenta</th>
-                    <th>Fraccionamiento</th>
                     <th>Direccion</th>
+                    <th># casa</th>
 
                     
                 </tr>
@@ -453,8 +453,9 @@
                         </td>
                     </ng-template>
                     <ng-container *ngIf="user.division_id_division; else elseTemplate2">
-                      <td>{{divisions[user.division_id_division - 1].name}}</td>
-                      <td>{{divisions[user.division_id_division - 1].street}}</td>
+                      <td>{{user.street}}</td>
+                      <!--<td>{{divisions[user.division_id_division - 1].street}}</td>-->
+                      <td>{{user.house_number}}</td>
                     </ng-container>
                     <ng-template #elseTemplate2>
                       <td>en espera</td>
