@@ -32,7 +32,7 @@
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover ">
                 <thead class=" text-primary">
                     <tr>
-                       <!-- <th>Id</th>-->
+                       <th>Id</th>
                         <th>Calle</th>
                         <th># Casa</th>
                         <th>Cantidad</th>
@@ -42,7 +42,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of users" class="pointer">
-                        <!--<td>{{user.id_payments}}</td>-->
+                        <td>{{user.id_users}}</td>
                         <td class=" text-primary">{{user.street}}</td>
                         <td>{{user.house_number}}</td>
                         <td style="color: green;">{{user.amount}}</td>
