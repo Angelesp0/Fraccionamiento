@@ -32,7 +32,7 @@
               <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover ">
                 <thead class=" text-primary">
                     <tr>
-                       <th>Id</th>
+                       <th>Id Usuario</th>
                         <th>Calle</th>
                         <th># Casa</th>
                         <th>Cantidad</th>
@@ -41,8 +41,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let user of users" class="pointer">
-                        <td>{{user.id_users}}</td>
+                    <tr *ngFor="let user of users" class="pointer" >
+                        <td (click)="open(add, user.id_users)">{{user.id_users }}</td>
                         <td class=" text-primary">{{user.street}}</td>
                         <td>{{user.house_number}}</td>
                         <td style="color: green;">{{user.amount}}</td>
@@ -57,3 +57,62 @@
       </div>
     </div>
   </div>
+
+  
+  <ng-template #add let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Informacion del Residente</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="registerForm" (ngSubmit)="newVoting()">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="assets/img/theme/not-user.png" class="img-thumbnail">
+            </div>
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <label>Nombre</label>
+                  <input formControlName="first_name" name="first_name" inputmode="text" class="form-control"  [(ngModel)]="user.first_name" value="user.first_name" >
+                </div>
+                <div class="col">
+                  <label>Apellido</label>
+                  <input formControlName="last_name" name="last_name" inputmode="text" class="form-control"  [(ngModel)]="user.last_name" value="user.last_name" >
+                </div>
+                <div class="w-100"></div>
+                <div class="col">
+                  <label>Estado de cuenta</label>
+                  <input formControlName="status" name="status" inputmode="text" class="form-control"  [(ngModel)]="user.status" value="user.status" >
+                </div>
+                <div class="col">
+                  <label>Fraccionamiento</label>
+                  <input formControlName="division_id_division" name="division_id_division" inputmode="text" class="form-control"  [(ngModel)]="user.name" value="user.name" >
+                </div>
+                <div class="w-100"></div>
+                <div class="col">
+                  <label>Calle</label>
+                  <input formControlName="street" name="street" inputmode="text" class="form-control"  [(ngModel)]="user.street" value="user.street" >
+                </div>
+                <div class="col">
+                  <label>Numero de casa</label>
+                  <input formControlName="house_number" name="house_number" inputmode="numeric" class="form-control"  [(ngModel)]="user.house_number" value="user.house_number" >
+                </div>
+                <div class="w-100"></div>
+                <div class="col">
+                  <label>Email</label>
+                  <input formControlName="email" name="email" inputmode="email" class="form-control"  [(ngModel)]="user.email" value="user.email" >
+                </div>
+              </div>
+            </div>
+          </div>
+        <br>
+          <div class="form-group">
+            <button type="submit" class="btn btn-danger" >Ok</button>
+            <button class="btn" (click)="d('Cross click')">Cancel</button>
+          </div>
+        </form>
+      </div>
+  </ng-template>

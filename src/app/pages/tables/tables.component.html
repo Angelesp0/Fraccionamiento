@@ -442,7 +442,7 @@
                     <td (click)="open('editar', user.id_users)" class=" text-primary">{{user.first_name }}</td>
                     <td>{{user.last_name }}</td>
                     <td *ngIf=" user.status === 'active'; else elseBlock">
-                        <span class="badge badge-success badge-do text-center">
+                        <span class="badkge badge-success badge-do text-center">
                             <i class="bg-warning"></i> {{user.status}}
                         </span></td>
                     <ng-template #elseBlock>

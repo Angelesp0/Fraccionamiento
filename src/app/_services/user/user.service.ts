@@ -14,7 +14,8 @@ const headers = new HttpHeaders();
 export class UserService {
 
   // tslint:disable-next-line: variable-name
-  base_path = 'http://192.168.137.1:3000/users';
+  base_path = 'http://192.168.100.80:3000/users';
+  environment = 'http://fraccionamiento-env.eba-y8c2hrwv.us-east-2.elasticbeanstalk.com';
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -55,20 +56,20 @@ export class UserService {
   // 192.168.100.35
 
   getUsers() {
-      return this.http.get('http://192.168.100.80:3000/users', this.httpOptions);
+      return this.http.get(this.environment + '/users', this.httpOptions);
   }
 
   getManager() {
-    return this.http.get('http://192.168.100.80:3000/users/manager', this.httpOptions);
+    return this.http.get(this.environment + '/users/manager', this.httpOptions);
   }
 
   getUsersByDivision(id) {
-    return this.http.get('http://192.168.100.80:3000/division/' + id + '/users', this.httpOptions);
+    return this.http.get(this.environment + '/division/' + id + '/users', this.httpOptions);
   }
 
   postUsers(item) {
     console.log(item);
-      return this.http.post('http://192.168.100.80:3000/users', item, this.httpOptions);
+      return this.http.post(this.environment + '/users', item, this.httpOptions);
   }
 
   postFraccionamientos(item) {
@@ -77,20 +78,20 @@ export class UserService {
       .set('name', item.name)
       .set('street', item.street )
       .set('id_users', item.id_users);
-    return this.http.post('http://192.168.100.80:3000/divisions', item, {params});
+    return this.http.post(this.environment + '/divisions', item, {params});
   }
 
   getDivision() {
-      return this.http.get('http://192.168.100.80:3000/division', this.httpOptions);
+      return this.http.get(this.environment + '/division', this.httpOptions);
   }
   getAdvertisements() {
-      return this.http.get('http://192.168.100.80:3000/advertisements', this.httpOptions);
+      return this.http.get(this.environment + '/advertisements', this.httpOptions);
   }
 
   postAdvertisements(title, description, date, division_id_division, url?, img?) {
     console.log('hola');
     return this.http
-    .post('http://192.168.100.80:3000/advertisements/' + division_id_division, {title, description, date, url, img}, this.httpOptions )
+    .post(this.environment + '/advertisements/' + division_id_division, {title, description, date, url, img}, this.httpOptions )
     .pipe(
       catchError(this.handleError)
     );
@@ -98,7 +99,7 @@ export class UserService {
   postRules(title, body, division_id_division, url?, name?) {
     console.log('hola');
     return this.http
-    .post('http://192.168.100.80:3000/rules/' + division_id_division, {title, body, division_id_division, url, name}, this.httpOptions )
+    .post(this.environment + '/rules/' + division_id_division, {title, body, division_id_division, url, name}, this.httpOptions )
     .pipe(
       catchError(this.handleError)
     );
@@ -107,7 +108,7 @@ export class UserService {
   postEvents(title, description, start, end, division_id_division) {
     console.log('hola');
     return this.http
-    .post('http://192.168.100.80:3000/events/' + division_id_division, {title, description, start, end}, this.httpOptions )
+    .post(this.environment + '/events/' + division_id_division, {title, description, start, end}, this.httpOptions )
     .pipe(
       catchError(this.handleError)
     );
@@ -116,39 +117,41 @@ export class UserService {
   postComplaints(subject, message, division_id_division) {
     console.log(division_id_division);
     return this.http
-    .post('http://192.168.100.80:3000/complaints/' + division_id_division, {subject, message}, this.httpOptions )
+    .post(this.environment + '/complaints/' + division_id_division, {subject, message}, this.httpOptions )
     .pipe(
       catchError(this.handleError)
     );
   }
 
   getAdvertisementsById(id) {
-    return this.http.get('http://192.168.100.80:3000/advertisements/' + id, this.httpOptions);
+    return this.http.get(this.environment + '/advertisements/' + id, this.httpOptions);
 }
   getRules() {
-      return this.http.get('http://192.168.100.80:3000/rules', this.httpOptions);
+      return this.http.get(this.environment + '/rules', this.httpOptions);
   }
   getEvents() {
-      return this.http.get('http://192.168.100.80:3000/events', this.httpOptions);
+      return this.http.get(this.environment + '/events', this.httpOptions);
   }
   getComplaints() {
-      return this.http.get('http://192.168.100.80:3000/complaints', this.httpOptions);
+      return this.http.get(this.environment + '/complaints', this.httpOptions);
   }
 
   getExecutive() {
-    return this.http.get('http://192.168.137.1:3000/executive', this.httpOptions);
+    return this.http.get(this.environment + '/executive', this.httpOptions);
   }
 
   getUser(id) {
-    return this.http.get('http://192.168.137.1:3000/users/' + id, this.httpOptions);
+    return this.http.get(this.environment + '/users/' + id, this.httpOptions);
   }
 
   getPaid(id) {
-    return this.http.get('http://192.168.100.80:3000/payments/' + id, this.httpOptions);
+    return this.http.get(this.environment + '/payments/' + id, this.httpOptions);
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>('http://192.168.100.80:3000/auth', { username, password })
+    return this.http.post<any>(this.environment + '/auth', { username, password })
+
+    //return this.http.post<any>('http://192.168.100.80:3000/auth', { username, password })
         .pipe(
           map(
             user => {
@@ -169,14 +172,14 @@ export class UserService {
   }
 
   getEventsbyDivision(id) {
-    return this.http.get('http://192.168.100.80:3000/events/' + id, this.httpOptions);
+    return this.http.get(this.environment + '/events/' + id, this.httpOptions);
   }
   getLastPaymentByDivision(id) {
-    return this.http.get('http://192.168.100.80:3000/lastPayments/' + id, this.httpOptions);
+    return this.http.get(this.environment + '/lastPayments/' + id, this.httpOptions);
   }
 
   postPayment(id, description, amount, status, update_time, type, users_id_users) {
-      return this.http.post('http://192.168.100.80:3000/payments/' + id, {description, amount, status, update_time, type, users_id_users}, this.httpOptions);
+      return this.http.post(this.environment + '/payments/' + id, {description, amount, status, update_time, type, users_id_users}, this.httpOptions);
   }
 
   postReceipt(id, date, file, value, payments_id_payments) {
@@ -187,40 +190,40 @@ export class UserService {
     uploadData.append('payments_id_payments', payments_id_payments);
 
     return this.http
-      .post('http://192.168.100.80:3000/users/' + id + '/receipt', uploadData)
+      .post(this.environment + '/users/' + id + '/receipt', uploadData)
       .pipe(
         catchError(this.handleError)
       );
   }
 
   activeUser(id) {
-    return this.http.put('http://192.168.100.80:3000/activeuser/' + id, 'active');
+    return this.http.put(this.environment + '/activeuser/' + id, 'active');
   }
 
   usersStatus(id) {
-    return this.http.get('http://192.168.100.80:3000/usersStatus/' + id,  this.httpOptions);
+    return this.http.get(this.environment + '/usersStatus/' + id,  this.httpOptions);
   }
 
   getEmployees() {
-    return this.http.get('http://192.168.100.80:3000/employee',  this.httpOptions);
+    return this.http.get(this.environment + '/employee',  this.httpOptions);
   }
   getStars(id) {
-    return this.http.get('http://192.168.100.80:3000/employee/' + id + '/stars',  this.httpOptions);
+    return this.http.get(this.environment + '/employee/' + id + '/stars',  this.httpOptions);
   }
   getVoting(id) {
-    return this.http.get('http://192.168.100.80:3000/voting/' + id ,  this.httpOptions);
+    return this.http.get(this.environment + '/voting/' + id ,  this.httpOptions);
   }
   getPayments(id) {
-    return this.http.get('http://192.168.100.80:3000/division/' + id + '/payments',  this.httpOptions);
+    return this.http.get(this.environment + '/division/' + id + '/payments',  this.httpOptions);
   }
   getVote(id) {
-    return this.http.get('http://192.168.100.80:3000/vote/' + id ,  this.httpOptions);
+    return this.http.get(this.environment + '/vote/' + id ,  this.httpOptions);
   }
 
   postVote(voting_id_voting, users_id_users, choice) {
     console.log('voto');
     return this.http
-    .post('http://192.168.100.80:3000/vote/' + voting_id_voting, {users_id_users, choice}, this.httpOptions )
+    .post(this.environment + '/vote/' + voting_id_voting, {users_id_users, choice}, this.httpOptions )
     .pipe(
       catchError(this.handleError)
     );
@@ -228,14 +231,38 @@ export class UserService {
 
   postVoting(divisionId, name, description, budget) {
     return this.http
-    .post('http://192.168.100.80:3000/voting/' + divisionId, {name, description, budget}, this.httpOptions )
+    .post(this.environment + '/voting/' + divisionId, {name, description, budget}, this.httpOptions )
     .pipe(
       catchError(this.handleError)
     );
   }
 
+  getServices() {
+    return this.http.get(this.environment + '/services',  this.httpOptions);
+  }
 
+  getNeed(id) {
+    return this.http.get(this.environment + '/services/need/' + id,  this.httpOptions);
+  }
 
+  getCategory(category) {
+    console.log(category);
+    return this.http.post(this.environment + '/services/category', {category: category},  this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
 
-
+  getArea(area) {
+    return this.http.post(this.environment + '/services/area', {area: area},  this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+  getActivity(activity) {
+    return this.http.post(this.environment + '/services/activity', {activity: activity},  this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
 }

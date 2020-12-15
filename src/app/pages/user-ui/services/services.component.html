@@ -17,9 +17,117 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            PROXIMAMENTE
+                            <div class="row justify-content-center">
+                                <div class="col-md">
+                                    <label>Categoria<strong><span class="text-danger">*</span></strong></label>
+                                    <select name="category" class="form-control" inputmode="text" [(ngModel)]="this.category" (ngModelChange)="getCategory($event)">
+                                        <option [value]="category.category" *ngFor="let category of  categories">{{category.category}} </option>
+                                    </select>
+                                </div>
+                                <div class="col-md">
+                                    <label>Areas<strong><span class="text-danger">*</span></strong></label>
+                                    <select name="area" class="form-control" inputmode="text" [(ngModel)]="this.area" (ngModelChange)="getArea($event)">
+                                        <option [value]="area.area" *ngFor="let area of areas">{{area.area}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md">
+                                    <label>Actividades<strong><span class="text-danger">*</span></strong></label>
+                                    <select name="activity" class="form-control" inputmode="text" [(ngModel)]="this.activity" (ngModelChange)="getActivity($event)">
+                                        <option [value]="activity.activity" *ngFor="let activity of activities">{{activity.activity}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md">
+                                    <label>Especialidades<strong><span class="text-danger">*</span></strong></label>
+                                    <select name="specific" class="form-control" inputmode="text" [(ngModel)]="this.specific" (ngModelChange)="getSpecific($event)">
+                                        <option [value]="specific.specific" *ngFor="let specific of specifics">{{specific.specific}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div *ngIf="form">
+                                <br>
+                                <h4>Generar Orden</h4>
+
+                                <form (ngSubmit)="onSubmit()">
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <label>Direccion<strong><span class="text-danger">*</span></strong></label>
+                                            <input name="address" inputmode="text" class="form-control" placeholder="Direccion" [(ngModel)]="this.order.address" >
+                                        </div>
+                                        <div class="col-md">
+                                            <label>Telefono <strong><span class="text-danger">*</span></strong></label>
+                                            <input name="phone" inputmode="text" class="form-control" placeholder="Telefono" [(ngModel)]="this.order.phone" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <label>Nombre del contacto <strong><span class="text-danger">*</span></strong></label>
+                                            <input name="contact" inputmode="text" class="form-control" placeholder="Nombre del contacto" [(ngModel)]="this.order.contact" >
+                                        </div>
+                                        <div class="col-md">
+                                            <label>Fecha <strong><span class="text-danger">*</span></strong></label>
+                                            <h3 style="color: green;">{{this.order.date}}</h3>                                        
+                                        </div>
+                                        <div class="col-md">
+                                            <label>Hora <strong><span class="text-danger">*</span></strong></label>
+                                            <h3 style="color: green;">{{this.order.hour}}</h3>                                        
+
+                                            <!--<input name="hour" inputmode="text" class="form-control" placeholder="Hora" [(ngModel)]="this.order.hour" >-->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <label>Servicio <strong><span class="text-danger">*</span></strong></label>
+                                            <input name="services" inputmode="text" class="form-control" placeholder="Servicio" [(ngModel)]="this.order.services" >
+                                        </div>
+                                        <div class="col-md">
+                                            <label>Descripcion <strong><span class="text-danger">*</span></strong></label>
+                                            <input name="description" inputmode="text" class="form-control" placeholder="Descripción" [(ngModel)]="this.order.description" >        
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <label>Cargo <strong><span class="text-danger">*</span></strong></label>
+                                            <input name="cargo" inputmode="text" class="form-control" placeholder="Cargo" [(ngModel)]="this.order.cargo" >
+                                        </div>
+                                        <div class="col-md">
+                                            <label>Metodo de pago <strong><span class="text-danger">*</span></strong></label>
+                                            <input name="method" inputmode="text" class="form-control" placeholder="Metodo de pago" [(ngModel)]="this.order.payment_method" >
+                                        </div>   
+                                    </div>     
+                                  <p><strong>Estas por agregar un nuevo usuario <span class="text-primary">Verifica</span> la informacion</strong></p>
+                                  <div class="form-group">
+                                    <button type="submit" ngbAutofocus class="btn btn-danger">Ok</button>
+                                  </div>
+                                </form>
+                            </div>
+                            
                         </div>
-                        <!--
+                        <!--<div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center  table-flush">
+                                      <thead class="text-primary">
+                                        <tr *ngFor="let service of services">
+                                            <div class="card shadow" >
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-3"> 
+                                                            <h4>{{service.id_need}}</h4>
+                                                            <h4>{{service.category}}</h4>
+                                                            <h4>{{service.area}}</h4>
+                                                            <h4>{{service.specific}}</h4>
+                                                            <h4>{{service.name}}</h4>
+                                                        </div>
+                                                    </div>                                         
+                                                </div>                                         
+                                            </div>
+                                        </tr>
+                                    </thead>
+                                </table>
+                              </div>
+                            </div>
+                        </div>
+                        
                     <div class="card-body">
                         <div class="row justify-content-center">
                             <div class="table-responsive">

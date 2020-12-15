@@ -55,7 +55,6 @@ export class VotingComponent implements OnInit {
       description: ['', Validators.required],
       division_id_division: ['', Validators.required],
       budget: ['', Validators.required]
-
     });
     console.log( this.currentUser);
     this.userService.getVoting(this.currentUser.user.division_id_division).pipe(map(this.extractData)).subscribe(response => {

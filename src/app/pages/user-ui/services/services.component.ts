@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../_services/user/user.service';
-
-
-
+import { Order } from '../../../models/orders';
 
 @Component({
   selector: 'app-services',
@@ -19,11 +17,47 @@ export class ServicesComponent implements OnInit {
     {rank: 5, name: 'Juan Lopez',    job: 'Electrico', status: 'Offline', img: 'team-4-800x800.jpg'},
     {rank: 3, name: 'Miranda F',     job: 'Jardinero', status: 'Offline', img: 'team-1-800x800.jpg'}
   ];
+  data: any = [];
+
   employees;
   selectedValue: any = 4;
   array;
-  constructor( public userService: UserService) { }
+  services;
+  categories;
+  category;
+  areas;
+  area;
+  activities;
+  activity;
+  specifics;
+  specific;
+  form: boolean = false;
+  order: any;
+  today = new Date();
+  day;
+  hour;
+
+  constructor(
+    public userService: UserService
+    ) {
+      this.order = new Order();
+
+     }
   ngOnInit() {
+    this.today = new Date();
+    let dd = String(this.today.getDate()).padStart(2, '0');
+    let mm = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = this.today.getFullYear();
+
+    this.day = dd + '/' + mm + '/' + yyyy;
+    let n = this.today.getHours();
+    let m = this.today.getMinutes();
+    let s = this.today.getSeconds();
+    this.hour = (n + ':' + m + ':' + s);
+
+    this.userService.getNeed('1').subscribe(response => {
+      this.categories = response;
+    });
     this.userService.getEmployees().subscribe(response => {
       this.employees = response;
       for (let index = 0; index < this.employees.length; index++) {
@@ -41,8 +75,37 @@ export class ServicesComponent implements OnInit {
       console.log(this.employees);
     });
   }
-  /*countStar(star) {
-    this.selectedValue = star;
-    console.log('Value of star', star);
-  }*/
+
+  getCategory(category) {
+    this.form = true;
+    this.userService.getCategory(category).subscribe(response => {
+      this.areas = response;
+    });
+    this.order.services = this.category;
+    this.order.date = this.day;
+    this.order.hour = this.hour;
+  }
+  getArea(area) {
+    this.order.services = this.area;
+    this.userService.getArea(area).subscribe(response => {
+      this.activities = response;
+    });
+  }
+
+  getActivity(activity) {
+    this.order.services = this.activity;
+    this.userService.getActivity(activity).subscribe(response => {
+      this.specifics = response;
+    });
+  }
+
+  getSpecific(specific) {
+    this.order.services = this.specific;
+  }
+
+  onSubmit() {
+    console.log(this.order);
+
+  }
+
 }
