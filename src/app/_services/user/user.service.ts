@@ -31,10 +31,9 @@ export class UserService {
   httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin':'*',
-      'Access-Control-Allow-Methods':'GET',
-      'Access-Control-Allow-Headers':'application/json',
+      'Access-Control-Allow-Methods':'GET, POST, OPTIONS, PUT, DELETE',
+      'Access-Control-Allow-Headers':'application/json, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method',
       'Content-Type': 'application/json; charset=utf-8',
-
     })
   };
 

@@ -423,47 +423,49 @@
               </tr>
             </tbody>
           </table>-->
-          <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover ">
-            <thead class=" text-primary">
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Cuenta</th>
-                    <th>Direccion</th>
-                    <th># casa</th>
+          <div class="card-body">
 
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of users" class="pointer">
-                    <td>{{user.id_users}}</td>
-                    <td (click)="open('editar', user.id_users)" class=" text-primary">{{user.first_name }}</td>
-                    <td>{{user.last_name }}</td>
-                    <td *ngIf=" user.status === 'active'; else elseBlock">
-                        <span class="badkge badge-success badge-do text-center">
-                            <i class="bg-warning"></i> {{user.status}}
-                        </span></td>
-                    <ng-template #elseBlock>
-                        <td>
-                            <span class="badge badge-warning badge-do text-center">
-                                <i class="bg-warning"></i> {{user.status}}
-                            </span>
-                        </td>
-                    </ng-template>
-                    <ng-container *ngIf="user.division_id_division; else elseTemplate2">
-                      <td>{{user.street}}</td>
-                      <!--<td>{{divisions[user.division_id_division - 1].street}}</td>-->
-                      <td>{{user.house_number}}</td>
-                    </ng-container>
-                    <ng-template #elseTemplate2>
-                      <td>en espera</td>
-                      <td>en espera</td>
-                    </ng-template>
-                </tr>
-            </tbody>
-          </table>
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover ">
+              <thead class=" text-primary">
+                  <tr>
+                      <th>Id</th>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Cuenta</th>
+                      <th>Direccion</th>
+                      <th># casa</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let user of users" class="pointer">
+                      <td>{{user.id_users}}</td>
+                      <td (click)="open('editar', user.id_users)" class=" text-primary">{{user.first_name }}</td>
+                      <td>{{user.last_name }}</td>
+                      <td *ngIf=" user.status === 'active'; else elseBlock">
+                          <span class="badkge badge-success badge-do text-center">
+                              <i class="bg-warning"></i> {{user.status}}
+                          </span></td>
+                      <ng-template #elseBlock>
+                          <td>
+                              <span class="badge badge-warning badge-do text-center">
+                                  <i class="bg-warning"></i> {{user.status}}
+                              </span>
+                          </td>
+                      </ng-template>
+                      <ng-container *ngIf="user.division_id_division; else elseTemplate2">
+                        <td>{{user.street}}</td>
+                        <!--<td>{{divisions[user.division_id_division - 1].street}}</td>-->
+                        <td>{{user.house_number}}</td>
+                      </ng-container>
+                      <ng-template #elseTemplate2>
+                        <td>en espera</td>
+                        <td>en espera</td>
+                      </ng-template>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+
         </div>
         <!--<div class="card-footer py-4">
           <nav aria-label="...">

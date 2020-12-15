@@ -200,10 +200,13 @@ export class TablesComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = JSON.parse( localStorage.getItem('currentUser'));
-    console.log(this.currentUser['user'].role_id_role);
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+    };
     this.role = this.currentUser['user'].role_id_role;
+    console.log("id Divicion", this.currentUser['user'].division_id_division)
     if (this.currentUser['user'].role_id_role === 2 ) {
-      console.log('gerente');
+      console.log('Gerente, getUsersByDivision');
       this.userService.getUsersByDivision(this.currentUser['user'].division_id_division).pipe(map(this.extractData)).subscribe(response => {
         this.dtTrigger.next();
         console.log(response);
@@ -211,7 +214,7 @@ export class TablesComponent implements OnInit {
       });
     }
     if (this.currentUser['user'].role_id_role === 1 ) {
-      console.log('Admin');
+      console.log('Admin, getManager');
       this.userService.getManager().pipe(map(this.extractData)).subscribe(response => {
         this.dtTrigger.next();
         console.log(response);
@@ -223,10 +226,7 @@ export class TablesComponent implements OnInit {
       this.divisions = response;
       console.log(this.divisions[0]['name']);
     });
-    console.log('hola');
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-    };
+
 
   }
 
