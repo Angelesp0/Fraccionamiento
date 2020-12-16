@@ -15,7 +15,9 @@ export class UserService {
 
   // tslint:disable-next-line: variable-name
   base_path = 'http://192.168.100.80:3000/users';
-  environment = 'http://fraccionamiento-env.eba-y8c2hrwv.us-east-2.elasticbeanstalk.com';
+  aws_environment = 'http://fraccionamiento-env.eba-y8c2hrwv.us-east-2.elasticbeanstalk.com';
+  dev_environment = 'http://192.168.100.80:3000';
+  environment = this.aws_environment;
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -264,4 +266,13 @@ export class UserService {
       catchError(this.handleError)
     );
   }
+
+  postOrder(users_id_users, address, phone, contact, hour, date, services, description, cargo, payment_method) {
+    return this.http
+    .post(this.environment + '/orders/' + users_id_users, {address, phone, contact, hour, date, services, description, cargo, payment_method}, this.httpOptions )
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+  
 }

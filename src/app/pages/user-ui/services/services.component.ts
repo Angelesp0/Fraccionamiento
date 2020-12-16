@@ -36,6 +36,9 @@ export class ServicesComponent implements OnInit {
   today = new Date();
   day;
   hour;
+  currentUser;
+  User_ID;
+  
 
   constructor(
     public userService: UserService
@@ -44,12 +47,17 @@ export class ServicesComponent implements OnInit {
 
      }
   ngOnInit() {
+    this.currentUser = JSON.parse( localStorage.getItem('currentUser'));
+    console.log(this.currentUser);
+    this.order.users_id_users = this.currentUser['user'].id_users;
+    this.order.cargo = 50.00;
+
     this.today = new Date();
     let dd = String(this.today.getDate()).padStart(2, '0');
     let mm = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
     let yyyy = this.today.getFullYear();
 
-    this.day = dd + '/' + mm + '/' + yyyy;
+    this.day = yyyy + '/' + mm + '/' + dd;
     let n = this.today.getHours();
     let m = this.today.getMinutes();
     let s = this.today.getSeconds();
@@ -104,6 +112,19 @@ export class ServicesComponent implements OnInit {
   }
 
   onSubmit() {
+    this.userService.postOrder(
+      this.order.users_id_users, 
+      this.order.address, 
+      this.order.phone, 
+      this.order.contact, 
+      this.order.hour, 
+      this.order.date, 
+      this.order.services, 
+      this.order.description, 
+      this.order.cargo, 
+      this.order.payment_method).subscribe( response => {
+      console.log(response);
+    })
     console.log(this.order);
 
   }
