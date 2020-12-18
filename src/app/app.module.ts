@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { DataTablesModule } from 'angular-datatables';
 import { BrowserModule } from '@angular/platform-browser';
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 
 
@@ -30,7 +31,8 @@ import { BrowserModule } from '@angular/platform-browser';
     RouterModule,
     AppRoutingModule,
     DataTablesModule,
-    
+    ToastrModule.forRoot({ positionClass: 'inline' }),
+    ToastContainerModule,
   ],
   declarations: [
     AppComponent,

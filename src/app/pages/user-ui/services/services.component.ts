@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../_services/user/user.service';
 import { Order } from '../../../models/orders';
 
+
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
@@ -38,13 +39,13 @@ export class ServicesComponent implements OnInit {
   hour;
   currentUser;
   User_ID;
-  
+  options;
+
 
   constructor(
-    public userService: UserService
+    public userService: UserService,
     ) {
       this.order = new Order();
-
      }
   ngOnInit() {
     this.currentUser = JSON.parse( localStorage.getItem('currentUser'));
@@ -122,11 +123,11 @@ export class ServicesComponent implements OnInit {
       this.order.services, 
       this.order.description, 
       this.order.cargo, 
-      this.order.payment_method).subscribe( response => {
-      console.log(response);
-    })
+      this.order.payment_method).subscribe( 
+        response => alert('Solicitud enviada'),
+        error => alert('Error intenta de nuevo')
+      )
     console.log(this.order);
 
   }
-
 }

@@ -14,6 +14,7 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent, NgbdModalConfirmAutofocus } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DataTablesModule } from 'angular-datatables';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AdvertisementsComponent } from './../../pages/advertisements/advertisements.component';
 import { RulesComponent } from './../../pages/rules/rules.component';
@@ -45,6 +46,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     ClipboardModule,
     FileUploadModule,
+    ToastrModule.forRoot(), // ToastrModule added
+
   ],
   declarations: [
     NgbdModalDivision,

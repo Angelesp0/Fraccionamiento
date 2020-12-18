@@ -17,3 +17,17 @@
   .rating-list li.selected {
     color: #ffd700;
 }
+.alert-info
+{
+    color: #fff;
+    border-color: #37d5f2;
+    background-color: #37d5f2;
+}
+.alert-info hr
+{
+    border-top-color: #1fd0f0;
+}
+.alert-info .alert-link
+{
+    color: #0da5c0;
+}
