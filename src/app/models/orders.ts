@@ -15,4 +15,5 @@ export class Order {
     payment_method: string;
     finish_date?: Date;
     Finish_hour?: string;
+    id_employee: number;
 }

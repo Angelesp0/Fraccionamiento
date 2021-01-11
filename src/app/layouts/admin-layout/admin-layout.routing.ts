@@ -17,6 +17,8 @@ import { RecordComponent } from './../../pages/user-ui/record/record.component';
 import { ServicesComponent } from 'src/app/pages/user-ui/services/services.component';
 import { VotingComponent } from './../../pages/voting/voting.component';
 import { PaymentsComponent } from './../../pages/payments/payments.component';
+import { OrdersComponent } from './../../pages/orders/orders.component';
+import { HistoryComponent } from './../../pages/user-ui/history/history.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -36,6 +38,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'services',       component: ServicesComponent },
     { path: 'voting',         component: VotingComponent},
     { path: 'payments',       component: PaymentsComponent},
+    { path: 'orders',         component: OrdersComponent},
+    { path: 'history',         component: HistoryComponent},
+
+
+
 
 
 ];

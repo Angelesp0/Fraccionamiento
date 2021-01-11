@@ -19,7 +19,9 @@ export const ROUTES: RouteInfo[] = [
     { path: '/rules', title: 'Reglamento',  icon:'ni-collection text-blue', class: '' },
     { path: '/events', title: 'Eventos',  icon:'ni-tag text-blue', class: '' },
     { path: '/complaints', title: 'Quejas',  icon:'ni-support-16 text-blue', class: '' },
+    { path: '/orders', title: 'Ordenes',  icon:'ni-key-25 text-info', class: '' },
     { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
+
     // { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' }
 ];
 
@@ -41,7 +43,11 @@ export const ROUTES_cliente: RouteInfo[] = [
   //{ path: '/rules', title: 'Rules',  icon:'ni-collection text-blue', class: '' },
   //{ path: '/events', title: 'Eventos',  icon:'ni-tag text-blue', class: '' },
   //{ path: '/complaints', title: 'Quejas',  icon:'ni-support-16 text-blue', class: '' },
+  { path: '/history', title: 'Historial',  icon:'ni ni-collection', class: '' },
   { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
+
+
+  
   // { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
 
 ];

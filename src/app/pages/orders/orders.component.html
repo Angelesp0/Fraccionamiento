@@ -1,0 +1,129 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header bg-transparent">
+            <div class="row ">
+              <div class="col-md-4">
+                <h3>Eventos</h3>
+              </div>
+              <div class="col-md-4 offset-md-4">
+                <!--<ng-container *ngIf="id_role === 2; else elseTemplate">
+                  <button class="btn btn-outline-primary" (click)="open('autofocus')">
+                    Agregar Nuevo Residente
+                  </button>
+                </ng-container>
+                <ng-template #elseTemplate>-->
+                  <button class="btn btn-outline-primary" (click)="open()">
+                    Agregar Nuevo Evento
+                  </button>
+                <!--</ng-template>-->
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover ">
+                <thead class=" text-primary">
+                    <tr>
+                        <th>Id</th>
+                        <th>Contacto</th>
+                        <th>Telefono</th>
+                        <th>Servicio</th>
+                        <th>Descripcion</th>
+                        <th>Fecha</th>
+                        <th>Trabajador asignado</th>
+                        <th>Estado</th>
+
+                        <!--<th>Fraccionamiento</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users" class="pointer">
+                        <td>{{user.id_orders}}</td>
+                        <td class=" text-primary" (click)="open(acept, user.users_id_users)">{{user.contact}}</td>
+                        <td>{{user.phone }}</td>
+                        <td>{{user.services }}</td>
+                        <td>{{user.description }}</td>
+                        <td>{{user.date  | date: 'dd/MM/y'}}</td>
+                        <td class=" text-primary" (click)="trabajador(ModificarTrabajador, user.id_orders)">{{user.first_name }} {{user.last_name }}</td>
+                        <td>
+                          <span class="badge badge-dot mr-4">
+                          <i class="bg-success"></i> {{user.status }}
+                        </span>
+                      </td>
+                        <!--<td>{{user.division_id_division}}</td>-->
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #acept let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar un nuevo Evento</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+            <div class="col-md-12" class="form-group">
+              <p>Nombre:               <label>{{user.first_name}}  {{user.last_name}}</label>
+              </p>
+            </div>
+            <div class="col-md-12" class="form-group">
+              <p>Email:               <label>{{user.email}} </label>
+              </p>
+            </div>
+            <div class="col-md-12" class="form-group">
+              <p>Fraccionamiento:               <label>{{user.name}} </label>
+              </p>
+            </div>
+            <div class="col-md-12" class="form-group">
+              <p>Calle:               <label>{{user.street}} </label>
+              </p>
+            </div>
+            <div class="col-md-12" class="form-group">
+              <p>Numero de casa:               <label>{{user.house_number}} </label>
+              </p>
+            </div>
+            <button type="submit" class="btn btn-danger">Ok</button>
+            <button class="btn" data-dismiss="modal">Cancel</button>
+      </div>
+  </ng-template>
+
+  <ng-template #ModificarTrabajador let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Modificar Trabajador</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="registerForm" >
+          <div class="col-md-12" class="form-group">
+            <label>Trabajadores <strong><span class="text-danger">*</span></strong></label>
+            <select formControlName="division_id_division" name="division_id_division" class="form-control" inputmode="text" [(ngModel)]="this.data.id_employee">
+                <option [value]="user.id_employee" *ngFor="let user of employees"> {{user.first_name}} {{user.last_name}} - {{user.job}} - {{user.rank}} </option>
+            </select>
+          </div>
+        <p><strong>Estas por cambiar al trabajador <span class="text-primary">Verifica</span> la informacion</strong></p>
+        <div class="form-group">
+          <button type="submit" class="btn btn-danger" (click)="changeEmployee()">Ok</button>
+          <button class="btn" data-dismiss="modal" >Cancel</button>
+          </div>
+      </form>
+    </div>
+  </ng-template>

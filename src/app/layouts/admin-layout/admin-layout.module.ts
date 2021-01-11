@@ -22,6 +22,7 @@ import { EventsComponent } from './../../pages/events/events.component';
 import { ComplaintsComponent } from './../../pages/complaints/complaints.component';
 import { VotingComponent } from './../../pages/voting/voting.component';
 import { PaymentsComponent } from './../../pages/payments/payments.component';
+import { OrdersComponent } from './../../pages/orders/orders.component';
 
 
 import { DivisionComponent, NgbdModalDivision } from './../../pages/division/division.component';
@@ -32,6 +33,8 @@ import { FileSelectDirective, FileUploadModule  } from 'ng2-file-upload';
 import { ServicesComponent } from './../../pages/user-ui/services/services.component';
 import { NgbdModalAdvertisements } from './../../pages/advertisements/advertisements.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { HistoryComponent } from '../../pages/user-ui/history/history.component';
+
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -68,7 +71,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     ServicesComponent,
     NgbdModalAdvertisements,
     VotingComponent,
-    PaymentsComponent
+    PaymentsComponent,
+    OrdersComponent,
+    HistoryComponent
   ],
   providers: [
     NgbActiveModal,

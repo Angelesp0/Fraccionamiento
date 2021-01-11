@@ -82,7 +82,7 @@
                                             <!--<input name="services" inputmode="text" class="form-control" placeholder="Servicio" [(ngModel)]="this.order.services" >-->
                                         </div>
                                         <div class="col-md">
-                                            <label>Descripcion <strong><span class="text-danger">*</span></strong></label>
+                                            <label>Descripcion detallada <strong><span class="text-danger">*</span></strong></label>
                                             <input name="description" inputmode="text" class="form-control" placeholder="Descripción" [(ngModel)]="this.order.description" >        
                                         </div>
                                     </div>
@@ -97,7 +97,14 @@
                                             <input name="method" inputmode="text" class="form-control" placeholder="Metodo de pago" [(ngModel)]="this.order.payment_method" >
                                         </div>   
                                     </div>     
-                                  <p><strong>Estas por agregar un nuevo usuario <span class="text-primary">Verifica</span> la informacion</strong></p>
+                                  <p><strong>Estas por solicitar un servicio <span class="text-primary">Verifica</span> la informacion</strong></p>
+                                  <div class="custom-control custom-control-alternative custom-checkbox">
+                                    <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
+                                    <label class="custom-control-label" for=" customCheckLogin">
+                                      <span class="text-muted">Aceptas los terminos y condiciones</span>
+                                    </label>
+                                  </div>
+                                  <br>
                                   <div class="form-group">
                                     <button type="submit" ngbAutofocus class="btn btn-danger">Ok</button>
                                   </div>
@@ -185,5 +192,4 @@
             </div>
         </div>
     </div>
-      
-    
+

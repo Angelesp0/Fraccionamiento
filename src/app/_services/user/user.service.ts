@@ -274,5 +274,16 @@ export class UserService {
       catchError(this.handleError)
     );
   }
-  
+
+  getOrders() {
+    return this.http.get(this.environment + '/orders',  this.httpOptions);
+  }
+
+  putEmployees(id, id_employee) {
+    return this.http.put(this.environment + '/orders/editEmployee/' + id, {id_employee: id_employee});
+  }
+
+  getHistory(id) {
+    return this.http.get(this.environment + '/orders/user/' + id, this.httpOptions);
+  }
 }
